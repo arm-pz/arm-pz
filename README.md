@@ -22,7 +22,7 @@ Add `--dry-run` to any install to see what it will do first.
 ## Find me
 
 - 🌐 Skills site: [skills.caffeinity.com](https://skills.caffeinity.com)
-- ☕ If a skill saves you time: [buy me a coffee](https://buymeacoffee.com/arm-pz)
+- ☕ If a skill saves you time: [buy me a coffee](https://buymeacoffee.com/vagabond_)
 - ⭐ Or just star the repo. It helps others find it.
 
 Found a problem with a skill? Open an issue on that skill's repo.
