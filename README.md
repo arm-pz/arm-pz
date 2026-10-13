@@ -12,6 +12,7 @@ One line installs any of them. It detects your agent (Claude Code, Cursor, Codex
 | --- | --- | --- |
 | [**do-better**](https://skills.caffeinity.com/do-better/) | Don't ask twice. Runs up to 100 sub-agents on the same task, then they attack, defend and judge each other in a bracket until one answer survives. | `npx skills add arm-pz/do-better` |
 | [**recruiter-lens**](https://skills.caffeinity.com/recruiter-lens/) | Reviews resumes, CVs and LinkedIn profiles the way recruiters actually screen them. Never invents a metric. | `npx skills add arm-pz/recruiter-lens` |
+| [**job-lens**](https://skills.caffeinity.com/job-lens/) | Writes the better version from your resume and a job description: tailored resume, stronger bullets, keyword placement, summaries, LinkedIn rewrite, interview answers. Nothing invented. Pairs with recruiter-lens. | `npx skills add arm-pz/job-lens --skill job-lens` |
 | [**wordsmith**](https://skills.caffeinity.com/wordsmith/) | Teaches your agent to edit, not just generate. 44 commands that keep the author's meaning and voice. | `npx skills add arm-pz/wordsmith` |
 | [**deep-tutor**](https://skills.caffeinity.com/deep-tutor/) | A patient teacher for any topic: curriculum, lessons, exams, ELI5. One question at a time. | `npx skills add arm-pz/deep-tutor` |
 | [**keyword-guard**](https://skills.caffeinity.com/keyword-guard/) | Plans topic clusters and kills keyword cannibalization so one page wins each query. | `npx skills add arm-pz/keyword-guard` |
