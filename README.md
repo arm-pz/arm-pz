@@ -17,6 +17,7 @@ One line installs any of them. It detects your agent (Claude Code, Cursor, Codex
 | [**deep-tutor**](https://skills.caffeinity.com/deep-tutor/) | A patient teacher for any topic: curriculum, lessons, exams, ELI5. One question at a time. | `npx skills add arm-pz/deep-tutor` |
 | [**keyword-guard**](https://skills.caffeinity.com/keyword-guard/) | Plans topic clusters and kills keyword cannibalization so one page wins each query. | `npx skills add arm-pz/keyword-guard` |
 | [**web-preflight**](https://skills.caffeinity.com/web-preflight/) | Checks a site you own before you ship it, without treating a status code as a finding. | `npx skills add arm-pz/web-preflight` |
+| [**findable**](https://skills.caffeinity.com/findable/) | Audits where your repo, skill or MCP server actually shows up in search, then drafts the About text, topics, README opening and a site page — plus dated re-checks. Nothing gets applied until you approve it. | `npx skills add arm-pz/findable --skill findable` |
 
 Add `--dry-run` to any install to see what it will do first.
 
