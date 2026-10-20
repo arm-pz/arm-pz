@@ -1,30 +1,78 @@
-# Hi, I'm Abdul Rahman 👋
+# Abdul Rahman P Z
 
-Senior backend developer (.NET, AWS, custom MCP servers). On the side, I build **open, plain-markdown skills that teach AI coding agents a craft**: no API keys, nothing to run, nothing to pay for.
+**Senior backend developer: .NET, AWS and custom MCP servers.**
+About 10 years of experience. Based in [CITY, COUNTRY]. [Available immediately / open to roles in ...]
 
-**→ [skills.caffeinity.com](https://skills.caffeinity.com)**
+[Email: YOUR-EMAIL] · [LinkedIn: YOUR-LINKEDIN-URL] · [Skills site](https://skills.caffeinity.com)
 
-## Skills
+---
 
-One line installs any of them. It detects your agent (Claude Code, Cursor, Codex, Qoder and others that read a `SKILL.md`) and puts the skill in the right folder.
+## Backend and cloud work
 
-| Skill | What it does | Install |
-| --- | --- | --- |
-| [**do-better**](https://skills.caffeinity.com/do-better/) | Don't ask twice. Runs up to 100 sub-agents on the same task, then they attack, defend and judge each other in a bracket until one answer survives. | `npx skills add arm-pz/do-better` |
-| [**recruiter-lens**](https://skills.caffeinity.com/recruiter-lens/) | Reviews resumes, CVs and LinkedIn profiles the way recruiters actually screen them. Never invents a metric. | `npx skills add arm-pz/recruiter-lens` |
-| [**applicant-kit**](https://skills.caffeinity.com/applicant-kit/) | Writes the better version from your resume and a job description: tailored resume, stronger bullets, keyword placement, summaries, LinkedIn rewrite, interview answers. Nothing invented. Pairs with recruiter-lens. | `npx skills add arm-pz/applicant-kit --skill applicant-kit` |
-| [**wordsmith**](https://skills.caffeinity.com/wordsmith/) | Teaches your agent to edit, not just generate. 44 commands that keep the author's meaning and voice. | `npx skills add arm-pz/wordsmith` |
-| [**topic-primer**](https://skills.caffeinity.com/topic-primer/) | A patient teacher for any topic: curriculum, lessons, exams, ELI5. One question at a time. | `npx skills add arm-pz/topic-primer` |
-| [**keyword-guard**](https://skills.caffeinity.com/keyword-guard/) | Plans topic clusters and kills keyword cannibalization so one page wins each query. | `npx skills add arm-pz/keyword-guard` |
-| [**web-preflight**](https://skills.caffeinity.com/web-preflight/) | Checks a site you own before you ship it, without treating a status code as a finding. | `npx skills add arm-pz/web-preflight` |
-| [**findable**](https://skills.caffeinity.com/findable/) | Audits where your repo, skill or MCP server actually shows up in search, then drafts the About text, topics, README opening and a site page — plus dated re-checks. Nothing gets applied until you approve it. | `npx skills add arm-pz/findable --skill findable` |
+I build cloud-native services on .NET and AWS, and custom MCP servers that connect AI agents to real systems.
 
-Add `--dry-run` to any install to see what it will do first.
+<!-- Replace this block once a backend repo is public. Keep it to three lines: what it does, the stack, one result you can show. -->
+**Featured:** [REPO NAME](https://github.com/arm-pz/REPO-NAME): [one sentence on what it does]. Stack: [.NET / AWS services / MCP]. [One shown result or diagram.]
 
-## Find me
+---
 
-- 🌐 Skills site: [skills.caffeinity.com](https://skills.caffeinity.com)
-- ☕ If a skill saves you time: [buy me a coffee](https://buymeacoffee.com/vagabond_)
-- ⭐ Or just star the repo. It helps others find it.
+## Open-source agent skills
 
-Found a problem with a skill? Open an issue on that skill's repo.
+On the side I write plain-markdown skills that teach AI coding agents (Claude Code, Cursor, Codex) one craft each. They are free, need no API keys and have nothing to run. Every skill states what it will not do, and none applies changes without your approval.
+
+### Career
+
+| Skill | What it does |
+|---|---|
+| [recruiter-lens](https://github.com/arm-pz/recruiter-lens) | Reviews resumes, CVs and LinkedIn profiles the way recruiters screen them. Optimizes real experience and never invents metrics. |
+| applicant-kit | Writes a tailored resume, stronger bullets, keyword placement, a LinkedIn rewrite and interview answers from your resume and a job description. Pairs with recruiter-lens. |
+
+### Writing and growth
+
+| Skill | What it does |
+|---|---|
+| wordsmith | Edits existing text while keeping the author's meaning and voice, through 44 commands. |
+| keyword-guard | Plans topic clusters so each search query has one winning page. |
+| [findable](https://github.com/arm-pz/findable) | Audits where a repo, skill or MCP server shows up in search, then drafts About text, topics and README openings. Nothing is applied without approval. |
+
+### Thinking and learning
+
+| Skill | What it does |
+|---|---|
+| [do-better](https://github.com/arm-pz/do-better) | Runs up to 100 sub-agents on one task. They critique each other in a bracket until one answer is left. The README states its limits. |
+| topic-primer | Teaches any topic through a curriculum, lessons, exams and ELI5 explanations, one question at a time. |
+
+### Ship checks
+
+| Skill | What it does |
+|---|---|
+| web-preflight | Checks a site you own before launch and does not treat status codes as findings. |
+
+More on the [skills site](https://skills.caffeinity.com).
+
+---
+
+## Install
+
+```bash
+npx skills add arm-pz/<skill-name>
+```
+
+The installer detects your agent and puts the skill in the right folder. Add `--dry-run` to preview. For applicant-kit and findable, also add `--skill <skill-name>`.
+
+---
+
+## How I work
+
+- **Honest claims.** Skills optimize what is true and never fabricate numbers, stars or results.
+- **Stated limits.** Each README says what the tool does not do.
+- **Approval first.** Skills ask before applying changes.
+
+---
+
+## Contact
+
+Hiring or collaborating: [[LinkedIn](https://www.linkedin.com/in/itsarm/)].
+Skill problems or ideas: open an issue on the skill's repo.
+
+<sub>If a skill saved you time, you can [buy me a coffee](https://buymeacoffee.com/vagabond_) or star the repo.</sub>
