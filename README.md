@@ -3,7 +3,7 @@
 **Senior backend developer: .NET, AWS and custom MCP servers.**
 About 10 years of experience. Based in [CITY, COUNTRY]. [Available immediately / open to roles in ...]
 
-[Email: YOUR-EMAIL] · [LinkedIn: YOUR-LINKEDIN-URL] · [Skills site](https://skills.caffeinity.com)
+[Email:](info@caffeinity.com) · [LinkedIn:](https://www.linkedin.com/in/itsarm/) · [Skills site](https://skills.caffeinity.com)
 
 ---
 
