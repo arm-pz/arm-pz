@@ -21,13 +21,13 @@ I build cloud-native services on .NET and AWS, and custom MCP servers that conne
 On the side I write plain-markdown skills that teach AI coding agents (Claude Code, Cursor, Codex) one craft each. They are free, need no API keys and have nothing to run. Every skill states what it will not do, and none applies changes without your approval.
 
 <!-- skills:start -->
-_43 skills in 9 groups. This block is generated from the [skills site](https://skills.caffeinity.com) manifest; edit the manifest, not this README._
+_51 skills in 9 groups. This block is generated from the [skills site](https://skills.caffeinity.com) manifest; edit the manifest, not this README._
 
 ### Start Here
 
 | Skill | What it does |
 |---|---|
-| [caffeinity-routing](https://skills.caffeinity.com/caffeinity-routing/) | Start here. Tell it the outcome you want and it picks one of nine workflows, lists the skills in order with what each hands the next, and names the ones you have not installed instead of improvising their work. [source](https://github.com/arm-pz/caffeinity-skills) |
+| [caffeinity-routing](https://skills.caffeinity.com/caffeinity-routing/) | Start here. Tell it the outcome you want and it picks one of ten workflows, lists the skills in order with what each hands the next, and names the ones you have not installed instead of improvising their work. [source](https://github.com/arm-pz/caffeinity-skills) |
 
 ### Skill Authoring
 
@@ -40,6 +40,8 @@ _43 skills in 9 groups. This block is generated from the [skills site](https://s
 | [skill-to-mod](https://skills.caffeinity.com/skill-to-mod/) | Checks whether a skill should become a Claude Code mod, then builds the plugin with your skill unchanged and a thin trigger, validates and tests it, and lists what it can touch. [source](https://github.com/arm-pz/skill-to-mod) |
 | [skill-launch](https://skills.caffeinity.com/skill-launch/) | The full pipeline from idea to launched skill: Draft-Skill writes it, Tune-Skill gates it through the validator, Findable-Polish polishes its discovery surfaces. [source](https://github.com/arm-pz/skill-launch) |
 | [tune-and-polish](https://skills.caffeinity.com/tune-and-polish/) | For a skill that both misfires and hides: Tune-Skill fixes the triggering description, sibling overlaps and stale counts, gated on check_skill.py with zero FAILs; then Findable-Polish audits and polishes the README, About and site copy against real queries. [source](https://github.com/arm-pz/tune-and-polish) |
+| [tune-skill-mod](https://skills.caffeinity.com/tune-skill-mod/) · Claude Code mod | Arms when Claude edits a SKILL.md, then holds git push, PRs and releases until tune-skill has validated the change. [source](https://github.com/arm-pz/caffeinity-skills) |
+| [skill-release-mod](https://skills.caffeinity.com/skill-release-mod/) · Claude Code mod | Holds gh release create and npm publish in Claude Code until prompts-to-skill-release has run the skill's test cases since your last edit. [source](https://github.com/arm-pz/caffeinity-skills) |
 
 ### Publish & Discover
 
@@ -64,6 +66,11 @@ _43 skills in 9 groups. This block is generated from the [skills site](https://s
 | [release-gate-ledger](https://skills.caffeinity.com/release-gate-ledger/) | The release gate where each lane writes its own rows into one ledger through a validating recorder, so a malformed or missing verdict is rejected the moment it is written. [source](https://github.com/arm-pz/release-gate-ledger) |
 | [release-gate-validator](https://skills.caffeinity.com/release-gate-validator/) | The cheapest release gate: turns three pre-launch reports that already exist into one posture, HOLD or ready, without running any lane or sending a single request. [source](https://github.com/arm-pz/release-gate-validator) |
 | [ship-sentinel](https://skills.caffeinity.com/ship-sentinel/) · Claude Code mod | A Claude Code mod that holds git push, PR, publish and deploy commands until your pre-ship check skills have run since the last edit. [source](https://github.com/arm-pz/ship-sentinel) |
+| [paper-trail](https://skills.caffeinity.com/paper-trail/) | Privacy policy, terms, refund and cookie pages written only from facts you confirm, then checked for placeholders, missing sections and emails nobody supplied. [source](https://github.com/arm-pz/caffeinity-skills) |
+| [release-gate-mod](https://skills.caffeinity.com/release-gate-mod/) · Claude Code mod | Holds production deploys and PR merges in Claude Code until the release-gate chair has run web-preflight, the security red team and the performance audit since your last edit. [source](https://github.com/arm-pz/caffeinity-skills) |
+| [web-preflight-mod](https://skills.caffeinity.com/web-preflight-mod/) · Claude Code mod | Reminds Claude Code to run web-preflight (exposed .env files, source maps, admin and debug surfaces) before a production deploy. [source](https://github.com/arm-pz/caffeinity-skills) |
+| [pre-ship-security-red-team-mod](https://skills.caffeinity.com/pre-ship-security-red-team-mod/) · Claude Code mod | Holds production deploys in Claude Code until the pre-ship security red team has run since your last edit. [source](https://github.com/arm-pz/caffeinity-skills) |
+| [pre-ship-performance-audit-mod](https://skills.caffeinity.com/pre-ship-performance-audit-mod/) · Claude Code mod | Reminds Claude Code to run the pre-ship performance audit before a production deploy. [source](https://github.com/arm-pz/caffeinity-skills) |
 
 ### SEO & Search
 
@@ -110,6 +117,7 @@ _43 skills in 9 groups. This block is generated from the [skills site](https://s
 | [solo-income-blueprint](https://skills.caffeinity.com/solo-income-blueprint/) | Turns “I want to make money online” into one plan: a business model that fits your skills, time and budget, one offer, a demand check, a minimal tool stack and a seven-day launch. [source](https://github.com/arm-pz/solo-income-blueprint) |
 | [topic-primer](https://skills.caffeinity.com/topic-primer/) | A world-class teacher for any topic, from zero background toward expert depth. [source](https://github.com/arm-pz/topic-primer) |
 | [study-system](https://skills.caffeinity.com/study-system/) | Builds the system around a skill you are acquiring: the minimum components, a beginner-to-practitioner roadmap, deliberate practice, spaced repetition and an honest mastery check. [source](https://github.com/arm-pz/study-system) |
+| [course-builder](https://skills.caffeinity.com/course-builder/) | A course for a class or cohort: measurable outcomes, modules in prerequisite order, an assessment for every outcome and a time budget that fits, checked by a script before the first session. [source](https://github.com/arm-pz/caffeinity-skills) |
 
 ### Workflows
 
@@ -118,12 +126,13 @@ Skills hand work to each other. Start with [caffeinity-routing](https://skills.c
 - **W1 Build a skill and make it installable:** draft-skill or prompts-to-skill → tune-skill → prompts-to-skill-release → skill-to-mod (optional)
 - **W2 Get a repo, skill or plugin found:** findable → publish-pipeline → upstream-check
 - **W3 Decide whether a site is safe to launch:** web-preflight → pre-ship-security-red-team → pre-ship-performance-audit → release-gate-chair or release-gate-ledger or release-gate-validator
-- **W4 Grow organic search traffic:** seo-crawl → keyword-guard → wordsmith → pre-ship-performance-audit (optional)
+- **W4 Grow organic search traffic:** seo-crawl → keyword-guard → wordsmith → pre-ship-performance-audit (optional) → platform-content (optional)
 - **W5 Land a job:** recruiter-lens → applicant-kit → application-pilot → career-track (optional)
 - **W6 Make a decision:** research-brief → data-readout (optional) → crash-test or do-better → strategy-memo
-- **W7 Learn a skill:** topic-primer → study-system
+- **W7 Learn a skill:** topic-primer → study-system → course-builder (optional)
 - **W8 Run cold outbound:** cold-email-list-gate → cold-email-ops → sales-copy
-- **W9 Launch a one-person product:** solo-income-blueprint → site-prompt → production-code → release-gate-chair → platform-content
+- **W9 Launch a one-person product:** solo-income-blueprint → site-prompt → production-code → paper-trail → release-gate-chair → platform-content
+- **W10 Maintain the skill family:** tune-skill → prompts-to-skill-release (optional) → upstream-check
 
 <!-- skills:end -->
 
