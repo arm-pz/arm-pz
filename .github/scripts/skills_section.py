@@ -30,6 +30,13 @@ def first_sentence(text):
     return lead.strip().replace("|", "\\|")
 
 
+def count(skills):
+    mods = sum(1 for s in skills if s.get("kind") == "mod")
+    n = len(skills) - mods
+    text = f"{n} skill" + ("" if n == 1 else "s")
+    return text + (f" and {mods} mod" + ("" if mods == 1 else "s") if mods else "")
+
+
 def render(manifest):
     order = {g["id"]: g["order"] for g in manifest["groups"]}
     skills = sorted((s for s in manifest["skills"] if s.get("page") != "none"),
@@ -37,7 +44,7 @@ def render(manifest):
     groups = [g for g in sorted(manifest["groups"], key=lambda g: g["order"])
               if any(s["group"] == g["id"] for s in skills)]
     out = [START,
-           f"_{len(skills)} skills in {len(groups)} groups. This block is generated from the "
+           f"_{count(skills)} in {len(groups)} groups. This block is generated from the "
            f"[skills site]({SITE}) manifest; edit the manifest, not this README._", ""]
     for g in groups:
         out += [f"### {g['title']}", "", "| Skill | What it does |", "|---|---|"]
