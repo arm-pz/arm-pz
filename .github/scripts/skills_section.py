@@ -56,13 +56,14 @@ def render(manifest):
         out.append("")
     flows = manifest.get("workflows", [])
     if flows:
-        out += ["### Workflows", "",
-                "Skills hand work to each other. Start with "
+        out += ["### Brews", "",
+                "Skills hand work to each other in brews (workflows). Start with "
                 f"[caffeinity-routing]({SITE}/caffeinity-routing/) if you are not sure which you need.", ""]
         for f in flows:
             steps = " → ".join(" or ".join(step["skills"]) + (" (optional)" if step.get("optional") else "")
                                for step in f["steps"])
-            out.append(f"- **{f['id']} {f['title']}:** {steps}")
+            name = f"Brew {f['number']} · {f['name']}" if "number" in f else f["id"]
+            out.append(f"- **{name}:** {f['title']}: {steps}")
         out.append("")
     out.append(END)
     return "\n".join(out)
