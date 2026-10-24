@@ -27,7 +27,7 @@ _45 skills and 7 mods in 9 groups. This block is generated from the [skills site
 
 | Skill | What it does |
 |---|---|
-| [caffeinity-routing](https://skills.caffeinity.com/caffeinity-routing/) | Start here. Tell it the outcome you want and it picks one of eleven workflows, lists the skills in order with what each hands the next, and names the ones you have not installed instead of improvising their work. [source](https://github.com/arm-pz/caffeinity-skills) |
+| [caffeinity-routing](https://skills.caffeinity.com/caffeinity-routing/) | Start here. Tell it the outcome you want and it picks one of eleven brews (workflows), lists the skills in order with what each hands the next, and names the ones you have not installed instead of improvising their work. [source](https://github.com/arm-pz/caffeinity-skills) |
 
 ### Skill Authoring
 
@@ -120,21 +120,21 @@ _45 skills and 7 mods in 9 groups. This block is generated from the [skills site
 | [study-system](https://skills.caffeinity.com/study-system/) | Builds the system around a skill you are acquiring: the minimum components, a beginner-to-practitioner roadmap, deliberate practice, spaced repetition and an honest mastery check. [source](https://github.com/arm-pz/study-system) |
 | [course-builder](https://skills.caffeinity.com/course-builder/) | A course for a class or cohort: measurable outcomes, modules in prerequisite order, an assessment for every outcome and a time budget that fits, checked by a script before the first session. [source](https://github.com/arm-pz/caffeinity-skills) |
 
-### Workflows
+### Brews
 
-Skills hand work to each other. Start with [caffeinity-routing](https://skills.caffeinity.com/caffeinity-routing/) if you are not sure which you need.
+Skills hand work to each other in brews (workflows). Start with [caffeinity-routing](https://skills.caffeinity.com/caffeinity-routing/) if you are not sure which you need.
 
-- **W1 Build a skill and make it installable:** draft-skill or prompts-to-skill → tune-skill → prompts-to-skill-release → skill-to-mod (optional)
-- **W2 Get a repo, skill or plugin found:** findable → publish-pipeline → upstream-check
-- **W3 Decide whether a site is safe to launch:** web-preflight → pre-ship-security-red-team → pre-ship-performance-audit → release-gate-chair or release-gate-ledger or release-gate-validator
-- **W4 Grow organic search traffic:** seo-crawl → keyword-guard → wordsmith → pre-ship-performance-audit (optional) → platform-content (optional)
-- **W5 Land a job:** recruiter-lens → applicant-kit → application-pilot → career-track (optional)
-- **W6 Make a decision:** research-brief → data-readout (optional) → crash-test or do-better → strategy-memo
-- **W7 Learn a skill:** topic-primer → study-system → course-builder (optional)
-- **W8 Run cold outbound:** cold-email-list-gate → cold-email-ops → sales-copy
-- **W9 Launch a one-person product:** solo-income-blueprint → site-prompt → production-code → paper-trail → release-gate-chair → platform-content
-- **W10 Maintain the skill family:** tune-skill → prompts-to-skill-release (optional) → upstream-check
-- **W11 Stand up or audit a skill estate:** skill-estate
+- **Brew 1 · Pour-over:** Build a skill and make it installable: draft-skill or prompts-to-skill → tune-skill → prompts-to-skill-release → skill-to-mod (optional)
+- **Brew 2 · Bloom:** Get a repo, skill or plugin found: findable → publish-pipeline → upstream-check
+- **Brew 3 · Espresso:** Decide whether a site is safe to launch: web-preflight → pre-ship-security-red-team → pre-ship-performance-audit → release-gate-chair or release-gate-ledger or release-gate-validator
+- **Brew 4 · Cold brew:** Grow organic search traffic: seo-crawl → keyword-guard → wordsmith → pre-ship-performance-audit (optional) → platform-content (optional)
+- **Brew 5 · French press:** Land a job: recruiter-lens → applicant-kit → application-pilot → career-track (optional)
+- **Brew 6 · Cupping:** Make a decision: research-brief → data-readout (optional) → crash-test or do-better → strategy-memo
+- **Brew 7 · Slow drip:** Learn a skill: topic-primer → study-system → course-builder (optional)
+- **Brew 8 · Nitro:** Run cold outbound: cold-email-list-gate → cold-email-ops → sales-copy
+- **Brew 9 · Moka pot:** Launch a one-person product: solo-income-blueprint → site-prompt → production-code → paper-trail → release-gate-chair → platform-content
+- **Brew 10 · Descale:** Maintain the skill family: tune-skill → prompts-to-skill-release (optional) → upstream-check
+- **Brew 11 · Estate roast:** Stand up or audit a skill estate: skill-estate
 
 <!-- skills:end -->
 
