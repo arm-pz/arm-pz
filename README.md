@@ -21,13 +21,13 @@ I build cloud-native services on .NET and AWS, and custom MCP servers that conne
 On the side I write plain-markdown skills that teach AI coding agents (Claude Code, Cursor, Codex) one craft each. They are free, need no API keys and have nothing to run. Every skill states what it will not do, and none applies changes without your approval.
 
 <!-- skills:start -->
-_44 skills and 7 mods in 9 groups. This block is generated from the [skills site](https://skills.caffeinity.com) manifest; edit the manifest, not this README._
+_45 skills and 7 mods in 9 groups. This block is generated from the [skills site](https://skills.caffeinity.com) manifest; edit the manifest, not this README._
 
 ### Start Here
 
 | Skill | What it does |
 |---|---|
-| [caffeinity-routing](https://skills.caffeinity.com/caffeinity-routing/) | Start here. Tell it the outcome you want and it picks one of ten workflows, lists the skills in order with what each hands the next, and names the ones you have not installed instead of improvising their work. [source](https://github.com/arm-pz/caffeinity-skills) |
+| [caffeinity-routing](https://skills.caffeinity.com/caffeinity-routing/) | Start here. Tell it the outcome you want and it picks one of eleven workflows, lists the skills in order with what each hands the next, and names the ones you have not installed instead of improvising their work. [source](https://github.com/arm-pz/caffeinity-skills) |
 
 ### Skill Authoring
 
@@ -52,6 +52,7 @@ _44 skills and 7 mods in 9 groups. This block is generated from the [skills site
 | [upstream-check](https://skills.caffeinity.com/upstream-check/) | Finds local commits that never reached GitHub, pushes only clean fast-forwards after a secret screen, then checks that the site index, the homepage, the marketplace and the READMEs agree with the repos that actually ship a SKILL.md. [source](https://github.com/arm-pz/upstream-check) |
 | [findable-polish](https://skills.caffeinity.com/findable-polish/) | Chains Findable and Wordsmith: audits a README, skill page or landing copy against the queries a real stranger types, then writes two or three alternatives per finding that fix it without inventing a fact. [source](https://github.com/arm-pz/findable-polish) |
 | [upstream-polish](https://skills.caffeinity.com/upstream-polish/) | Chains Upstream-Check — fetch-based push verdicts, fast-forward only, screened for credential-shaped lines — with Wordsmith rewriting drifted descriptions, topics and README rows, so repos and listings tell the same story again. [source](https://github.com/arm-pz/upstream-polish) |
+| [skill-estate](https://skills.caffeinity.com/skill-estate/) | The whole-collection sweep: inventory every skill repo, reconcile the site, marketplace and README, tune the family, close workflow gaps, wire self-publishing, add trigger tests and listings, and leave a maintenance loop. [source](https://github.com/arm-pz/caffeinity-skills) |
 
 ### Build & Ship
 
@@ -133,6 +134,7 @@ Skills hand work to each other. Start with [caffeinity-routing](https://skills.c
 - **W8 Run cold outbound:** cold-email-list-gate → cold-email-ops → sales-copy
 - **W9 Launch a one-person product:** solo-income-blueprint → site-prompt → production-code → paper-trail → release-gate-chair → platform-content
 - **W10 Maintain the skill family:** tune-skill → prompts-to-skill-release (optional) → upstream-check
+- **W11 Stand up or audit a skill estate:** skill-estate
 
 <!-- skills:end -->
 
