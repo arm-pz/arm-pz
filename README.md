@@ -1,7 +1,7 @@
 # Abdul Rahman P Z
 
 **Senior backend developer: .NET, AWS and custom MCP servers.**
-About 10 years of experience. Based in [CITY, COUNTRY]. [Available immediately / open to roles in ...]
+About 10 years of experience. Based in Coimbatore. [Available immediately / open to roles in ...]
 
 [Email](mailto:info@caffeinity.com) · [LinkedIn:](https://www.linkedin.com/in/itsarm/) · [Skills site](https://skills.caffeinity.com)
 
