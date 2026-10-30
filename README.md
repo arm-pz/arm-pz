@@ -11,8 +11,6 @@ About 10 years of experience. Based in Coimbatore. [Available immediately / open
 
 I build cloud-native services on .NET and AWS, and custom MCP servers that connect AI agents to real systems.
 
-<!-- Replace this block once a backend repo is public. Keep it to three lines: what it does, the stack, one result you can show. -->
-**Featured:** [REPO NAME](https://github.com/arm-pz/REPO-NAME): [one sentence on what it does]. Stack: [.NET / AWS services / MCP]. [One shown result or diagram.]
 
 ---
 
@@ -166,3 +164,5 @@ Hiring or collaborating: [[LinkedIn](https://www.linkedin.com/in/itsarm/)].
 Skill problems or ideas: open an issue on the skill's repo.
 
 <sub>If a skill saved you time, you can [buy me a coffee](https://buymeacoffee.com/vagabond_) or star the repo.</sub>
+
+
