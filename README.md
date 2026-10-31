@@ -19,7 +19,7 @@ I build cloud-native services on .NET and AWS, and custom MCP servers that conne
 On the side I write plain-markdown skills that teach AI coding agents (Claude Code, Cursor, Codex) one craft each. They are free, need no API keys and have nothing to run. Every skill states what it will not do, and none applies changes without your approval.
 
 <!-- skills:start -->
-_45 skills and 7 mods in 9 groups. This block is generated from the [skills site](https://skills.caffeinity.com) manifest; edit the manifest, not this README._
+_48 skills and 7 mods in 9 groups. This block is generated from the [skills site](https://skills.caffeinity.com) manifest; edit the manifest, not this README._
 
 ### Start Here
 
@@ -51,6 +51,7 @@ _45 skills and 7 mods in 9 groups. This block is generated from the [skills site
 | [findable-polish](https://skills.caffeinity.com/findable-polish/) | Chains Findable and Wordsmith: audits a README, skill page or landing copy against the queries a real stranger types, then writes two or three alternatives per finding that fix it without inventing a fact. [source](https://github.com/arm-pz/findable-polish) |
 | [upstream-polish](https://skills.caffeinity.com/upstream-polish/) | Chains Upstream-Check — fetch-based push verdicts, fast-forward only, screened for credential-shaped lines — with Wordsmith rewriting drifted descriptions, topics and README rows, so repos and listings tell the same story again. [source](https://github.com/arm-pz/upstream-polish) |
 | [skill-estate](https://skills.caffeinity.com/skill-estate/) | The whole-collection sweep: inventory every skill repo, reconcile the site, marketplace and README, tune the family, close workflow gaps, wire self-publishing, add trigger tests and listings, and leave a maintenance loop. [source](https://github.com/arm-pz/caffeinity-skills) |
+| [seo-sweep](https://skills.caffeinity.com/seo-sweep/) | Runs the Skillsmith SEO skills on a site you own, in order, fixes what they find in the site's code, proves each fix with a re-crawl, and turns every defect a skill shows along the way into a tested fix to that skill, chaining seo-crawl… [source](https://github.com/arm-pz/seo-sweep) |
 
 ### Build & Ship
 
@@ -70,6 +71,8 @@ _45 skills and 7 mods in 9 groups. This block is generated from the [skills site
 | [web-preflight-mod](https://skills.caffeinity.com/web-preflight-mod/) · Claude Code mod | Reminds Claude Code to run web-preflight (exposed .env files, source maps, admin and debug surfaces) before a production deploy. [source](https://github.com/arm-pz/caffeinity-skills) |
 | [pre-ship-security-red-team-mod](https://skills.caffeinity.com/pre-ship-security-red-team-mod/) · Claude Code mod | Holds production deploys in Claude Code until the pre-ship security red team has run since your last edit. [source](https://github.com/arm-pz/caffeinity-skills) |
 | [pre-ship-performance-audit-mod](https://skills.caffeinity.com/pre-ship-performance-audit-mod/) · Claude Code mod | Reminds Claude Code to run the pre-ship performance audit before a production deploy. [source](https://github.com/arm-pz/caffeinity-skills) |
+| [choose-effort](https://skills.caffeinity.com/choose-effort/) | Asks the user how much effort a Claude Code task deserves before heavy work starts, then recommends an effort level, whether to fan out to subagents, goal mode, workflows or agent teams, how to set it, and when to check /usage. [source](https://github.com/arm-pz/choose-effort) |
+| [diagnose-usage](https://skills.caffeinity.com/diagnose-usage/) | Diagnoses why a Claude Code session or day burned through usage limits faster than expected, and says what to change. [source](https://github.com/arm-pz/diagnose-usage) |
 
 ### SEO & Search
 
