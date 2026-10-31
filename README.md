@@ -19,7 +19,7 @@ I build cloud-native services on .NET and AWS, and custom MCP servers that conne
 On the side I write plain-markdown skills that teach AI coding agents (Claude Code, Cursor, Codex) one craft each. They are free, need no API keys and have nothing to run. Every skill states what it will not do, and none applies changes without your approval.
 
 <!-- skills:start -->
-_48 skills and 7 mods in 9 groups. This block is generated from the [skills site](https://skills.caffeinity.com) manifest; edit the manifest, not this README._
+_49 skills and 7 mods in 9 groups. This block is generated from the [skills site](https://skills.caffeinity.com) manifest; edit the manifest, not this README._
 
 ### Start Here
 
@@ -73,6 +73,7 @@ _48 skills and 7 mods in 9 groups. This block is generated from the [skills site
 | [pre-ship-performance-audit-mod](https://skills.caffeinity.com/pre-ship-performance-audit-mod/) · Claude Code mod | Reminds Claude Code to run the pre-ship performance audit before a production deploy. [source](https://github.com/arm-pz/caffeinity-skills) |
 | [choose-effort](https://skills.caffeinity.com/choose-effort/) | Asks the user how much effort a Claude Code task deserves before heavy work starts, then recommends an effort level, whether to fan out to subagents, goal mode, workflows or agent teams, how to set it, and when to check /usage. [source](https://github.com/arm-pz/choose-effort) |
 | [diagnose-usage](https://skills.caffeinity.com/diagnose-usage/) | Diagnoses why a Claude Code session or day burned through usage limits faster than expected, and says what to change. [source](https://github.com/arm-pz/diagnose-usage) |
+| [session-retrace](https://skills.caffeinity.com/session-retrace/) | Find a past AI coding conversation from a fuzzy memory — "the session where we fixed the redirect" — across Qoder, Claude Code, Codex and Gemini CLI. [source](https://github.com/arm-pz/session-retrace) |
 
 ### SEO & Search
 
