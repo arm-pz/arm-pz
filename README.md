@@ -19,7 +19,7 @@ I build cloud-native services on .NET and AWS, and custom MCP servers that conne
 On the side I write plain-markdown skills that teach AI coding agents (Claude Code, Cursor, Codex) one craft each. They are free, need no API keys and have nothing to run. Every skill states what it will not do, and none applies changes without your approval.
 
 <!-- skills:start -->
-_51 skills and 7 mods in 9 groups. This block is generated from the [skills site](https://skills.caffeinity.com) manifest; edit the manifest, not this README._
+_52 skills and 7 mods in 9 groups. This block is generated from the [skills site](https://skills.caffeinity.com) manifest; edit the manifest, not this README._
 
 ### Start Here
 
@@ -93,6 +93,7 @@ _51 skills and 7 mods in 9 groups. This block is generated from the [skills site
 | [wordsmith](https://skills.caffeinity.com/wordsmith/) | Teaches your agent to edit, not just generate: 44 commands across 5 disciplines that tighten, rewrite, critique and proofread while keeping the author's meaning, hedges and voice intact. [source](https://github.com/arm-pz/wordsmith) |
 | [platform-content](https://skills.caffeinity.com/platform-content/) | Writes platform-native content packs from one brief: X threads, LinkedIn posts, YouTube and TikTok scripts, Instagram captions, newsletters and blog articles, each shaped to how that platform is actually read. [source](https://github.com/arm-pz/platform-content) |
 | [sales-copy](https://skills.caffeinity.com/sales-copy/) | Writes buyer-facing conversion assets: long-form sales pages, landing pages, launch and abandoned-cart email sequences and ad variations, built on the offer and the objections you can actually back. [source](https://github.com/arm-pz/sales-copy) |
+| [ai-team-blueprint](https://skills.caffeinity.com/ai-team-blueprint/) | Guide a solo operator or small business from "I want an AI team" to a ready-to-run v1 blueprint for a team of 3 to 5 Claude agents. [source](https://github.com/arm-pz/ai-team-blueprint) |
 
 ### Outbound
 
