@@ -19,7 +19,7 @@ I build cloud-native services on .NET and AWS, and custom MCP servers that conne
 On the side I write plain-markdown skills that teach AI coding agents (Claude Code, Cursor, Codex) one craft each. They are free, need no API keys and have nothing to run. Every skill states what it will not do, and none applies changes without your approval.
 
 <!-- skills:start -->
-_52 skills and 7 mods in 9 groups. This block is generated from the [skills site](https://skills.caffeinity.com) manifest; edit the manifest, not this README._
+_53 skills and 7 mods in 9 groups. This block is generated from the [skills site](https://skills.caffeinity.com) manifest; edit the manifest, not this README._
 
 ### Start Here
 
@@ -53,6 +53,7 @@ _52 skills and 7 mods in 9 groups. This block is generated from the [skills site
 | [skill-estate](https://skills.caffeinity.com/skill-estate/) | The whole-collection sweep: inventory every skill repo, reconcile the site, marketplace and README, tune the family, close workflow gaps, wire self-publishing, add trigger tests and listings, and leave a maintenance loop. [source](https://github.com/arm-pz/caffeinity-skills) |
 | [seo-sweep](https://skills.caffeinity.com/seo-sweep/) | Runs the Skillsmith SEO skills on a site you own, in order, fixes what they find in the site's code, proves each fix with a re-crawl, and turns every defect a skill shows along the way into a tested fix to that skill, chaining seo-crawl… [source](https://github.com/arm-pz/seo-sweep) |
 | [get-indexed](https://skills.caffeinity.com/get-indexed/) | Tells search engines about a site's new and changed pages through every channel that has an API, and lists the few steps that still need a person. [source](https://github.com/arm-pz/get-indexed) |
+| [portable-harness](https://skills.caffeinity.com/portable-harness/) | Set up a repo so any coding agent (Claude Code, Codex, Cursor) behaves the same wherever it runs - writes 12 working rules at the top of CLAUDE.md or AGENTS.md, adds map sections only where the agent keeps getting things wrong, and… [source](https://github.com/arm-pz/portable-harness) |
 
 ### Build & Ship
 
