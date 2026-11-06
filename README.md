@@ -19,7 +19,7 @@ I build cloud-native services on .NET and AWS, and custom MCP servers that conne
 On the side I write plain-markdown skills that teach AI coding agents (Claude Code, Cursor, Codex) one craft each. They are free, need no API keys and have nothing to run. Every skill states what it will not do, and none applies changes without your approval.
 
 <!-- skills:start -->
-_53 skills and 7 mods in 9 groups. This block is generated from the [skills site](https://skills.caffeinity.com) manifest; edit the manifest, not this README._
+_54 skills and 7 mods in 9 groups. This block is generated from the [skills site](https://skills.caffeinity.com) manifest; edit the manifest, not this README._
 
 ### Start Here
 
@@ -77,6 +77,7 @@ _53 skills and 7 mods in 9 groups. This block is generated from the [skills site
 | [diagnose-usage](https://skills.caffeinity.com/diagnose-usage/) | Diagnoses why a Claude Code session or day burned through usage limits faster than expected, and says what to change. [source](https://github.com/arm-pz/diagnose-usage) |
 | [session-retrace](https://skills.caffeinity.com/session-retrace/) | Find a past AI coding conversation from a fuzzy memory — "the session where we fixed the redirect" — across Qoder, Claude Code, Codex and Gemini CLI. [source](https://github.com/arm-pz/session-retrace) |
 | [consistent-code-review](https://skills.caffeinity.com/consistent-code-review/) | Perform a deterministic, evidence-backed code review that produces the same findings on re-runs of unchanged code, reconciled against a previous report when one is supplied. [source](https://github.com/arm-pz/consistent-code-review) |
+| [harness-audit](https://skills.caffeinity.com/harness-audit/) | Audits an existing coding-agent harness (CLAUDE.md, AGENTS.md, rules files, hooks, MCP and tool config, skills) against the project's past Claude Code sessions, then returns a ranked findings report plus proposed diffs applied only after… [source](https://github.com/arm-pz/harness-audit) |
 
 ### SEO & Search
 
