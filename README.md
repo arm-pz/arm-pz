@@ -19,7 +19,7 @@ I build cloud-native services on .NET and AWS, and custom MCP servers that conne
 On the side I write plain-markdown skills that teach AI coding agents (Claude Code, Cursor, Codex) one craft each. They are free, need no API keys and have nothing to run. Every skill states what it will not do, and none applies changes without your approval.
 
 <!-- skills:start -->
-_55 skills and 7 mods in 9 groups. This block is generated from the [skills site](https://skills.caffeinity.com) manifest; edit the manifest, not this README._
+_56 skills and 7 mods in 9 groups. This block is generated from the [skills site](https://skills.caffeinity.com) manifest; edit the manifest, not this README._
 
 ### Start Here
 
@@ -40,6 +40,7 @@ _55 skills and 7 mods in 9 groups. This block is generated from the [skills site
 | [tune-and-polish](https://skills.caffeinity.com/tune-and-polish/) | For a skill that both misfires and hides: Tune-Skill fixes the triggering description, sibling overlaps and stale counts, gated on check_skill.py with zero FAILs; then Findable-Polish audits and polishes the README, About and site copy against real queries. [source](https://github.com/arm-pz/tune-and-polish) |
 | [tune-skill-mod](https://skills.caffeinity.com/tune-skill-mod/) · Claude Code mod | Arms when Claude edits a SKILL.md, then holds git push, PRs and releases until tune-skill has validated the change. [source](https://github.com/arm-pz/caffeinity-skills) |
 | [skill-release-mod](https://skills.caffeinity.com/skill-release-mod/) · Claude Code mod | Holds gh release create and npm publish in Claude Code until prompts-to-skill-release has run the skill's test cases since your last edit. [source](https://github.com/arm-pz/caffeinity-skills) |
+| [tune-and-ship](https://skills.caffeinity.com/tune-and-ship/) | One published skill at a time, all the way through: tuned with tune-skill, every version, flag and price checked against its source, listing polished, released in one PR, then the site page and marketplace copy confirmed live. [source](https://github.com/arm-pz/caffeinity-skills) |
 
 ### Publish & Discover
 
