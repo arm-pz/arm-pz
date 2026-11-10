@@ -25,7 +25,7 @@ _56 skills and 7 mods in 9 groups. This block is generated from the [skills site
 
 | Skill | What it does |
 |---|---|
-| [caffeinity-routing](https://skills.caffeinity.com/caffeinity-routing/) | Start here. Tell it the outcome you want and it picks one of eleven brews (workflows), lists the skills in order with what each hands the next, and names the ones you have not installed instead of improvising their work. [source](https://github.com/arm-pz/caffeinity-skills) |
+| [caffeinity-routing](https://skills.caffeinity.com/caffeinity-routing/) | Start here. Tell it the outcome you want and it picks one of twelve brews (workflows), lists the skills in order with what each hands the next, and names the ones you have not installed instead of improvising their work. [source](https://github.com/arm-pz/caffeinity-skills) |
 
 ### Skill Authoring
 
@@ -52,7 +52,7 @@ _56 skills and 7 mods in 9 groups. This block is generated from the [skills site
 | [findable-polish](https://skills.caffeinity.com/findable-polish/) | Chains Findable and Wordsmith: audits a README, skill page or landing copy against the queries a real stranger types, then writes two or three alternatives per finding that fix it without inventing a fact. [source](https://github.com/arm-pz/findable-polish) |
 | [upstream-polish](https://skills.caffeinity.com/upstream-polish/) | Chains Upstream-Check — fetch-based push verdicts, fast-forward only, screened for credential-shaped lines — with Wordsmith rewriting drifted descriptions, topics and README rows, so repos and listings tell the same story again. [source](https://github.com/arm-pz/upstream-polish) |
 | [skill-estate](https://skills.caffeinity.com/skill-estate/) | The whole-collection sweep: inventory every skill repo, reconcile the site, marketplace and README, tune the family, close workflow gaps, wire self-publishing, add trigger tests and listings, and leave a maintenance loop. [source](https://github.com/arm-pz/caffeinity-skills) |
-| [seo-sweep](https://skills.caffeinity.com/seo-sweep/) | Runs the Skillsmith SEO skills on a site you own, in order, fixes what they find in the site's code, proves each fix with a re-crawl, and turns every defect a skill shows along the way into a tested fix to that skill, chaining seo-crawl… [source](https://github.com/arm-pz/seo-sweep) |
+| [seo-sweep](https://skills.caffeinity.com/seo-sweep/) | Runs the Skillsmith by Caffeinity SEO skills on a site you own, in order, fixes what they find in the site's code, proves each fix with a re-crawl, and turns every defect a skill shows along the way into a tested fix to that skill, chaining seo-crawl… [source](https://github.com/arm-pz/seo-sweep) |
 | [get-indexed](https://skills.caffeinity.com/get-indexed/) | Tells search engines about a site's new and changed pages through every channel that has an API, and lists the few steps that still need a person. [source](https://github.com/arm-pz/get-indexed) |
 | [portable-harness](https://skills.caffeinity.com/portable-harness/) | Set up a repo so any coding agent (Claude Code, Codex, Cursor) behaves the same wherever it runs - writes 12 working rules at the top of CLAUDE.md or AGENTS.md, adds map sections only where the agent keeps getting things wrong, and… [source](https://github.com/arm-pz/portable-harness) |
 
@@ -134,9 +134,9 @@ _56 skills and 7 mods in 9 groups. This block is generated from the [skills site
 Skills hand work to each other in brews (workflows). Start with [caffeinity-routing](https://skills.caffeinity.com/caffeinity-routing/) if you are not sure which you need.
 
 - **Brew 1 · Pour-over:** Build a skill and make it installable: draft-skill or prompts-to-skill → tune-skill → prompts-to-skill-release → skill-to-mod (optional)
-- **Brew 2 · Bloom:** Get a repo, skill or plugin found: findable → publish-pipeline → upstream-check
+- **Brew 2 · Bloom:** Get a repo, skill or plugin found: findable → publish-pipeline → upstream-check → get-indexed (optional)
 - **Brew 3 · Espresso:** Decide whether a site is safe to launch: web-preflight → pre-ship-security-red-team → pre-ship-performance-audit → release-gate-chair or release-gate-ledger or release-gate-validator
-- **Brew 4 · Cold brew:** Grow organic search traffic: seo-crawl → keyword-guard → wordsmith → pre-ship-performance-audit (optional) → platform-content (optional)
+- **Brew 4 · Cold brew:** Grow organic search traffic: seo-crawl → keyword-guard → wordsmith → pre-ship-performance-audit (optional) → platform-content (optional) → get-indexed (optional)
 - **Brew 5 · French press:** Land a job: recruiter-lens → applicant-kit → application-pilot → career-track (optional)
 - **Brew 6 · Cupping:** Make a decision: research-brief → data-readout (optional) → crash-test or do-better → strategy-memo
 - **Brew 7 · Slow drip:** Learn a skill: topic-primer → study-system → course-builder (optional)
@@ -144,6 +144,7 @@ Skills hand work to each other in brews (workflows). Start with [caffeinity-rout
 - **Brew 9 · Moka pot:** Launch a one-person product: solo-income-blueprint → site-prompt → production-code → paper-trail → release-gate-chair → platform-content
 - **Brew 10 · Descale:** Maintain the skill family: tune-skill → prompts-to-skill-release (optional) → upstream-check
 - **Brew 11 · Estate roast:** Stand up or audit a skill estate: skill-estate
+- **Brew 12 · Dial-in:** Set up a coding agent for a repo: portable-harness or harness-audit → setup-claude-advisor (optional) → diagnose-usage (optional) → choose-effort (optional)
 
 <!-- skills:end -->
 
