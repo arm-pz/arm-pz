@@ -19,7 +19,7 @@ I build cloud-native services on .NET and AWS, and custom MCP servers that conne
 On the side I write plain-markdown skills that teach AI coding agents (Claude Code, Cursor, Codex) one craft each. They are free, need no API keys and have nothing to run. Every skill states what it will not do, and none applies changes without your approval.
 
 <!-- skills:start -->
-_56 skills and 7 mods in 9 groups. This block is generated from the [skills site](https://skills.caffeinity.com) manifest; edit the manifest, not this README._
+_60 skills and 7 mods in 9 groups. This block is generated from the [skills site](https://skills.caffeinity.com) manifest; edit the manifest, not this README._
 
 ### Start Here
 
@@ -41,6 +41,7 @@ _56 skills and 7 mods in 9 groups. This block is generated from the [skills site
 | [tune-skill-mod](https://skills.caffeinity.com/tune-skill-mod/) · Claude Code mod | Arms when Claude edits a SKILL.md, then holds git push, PRs and releases until tune-skill has validated the change. [source](https://github.com/arm-pz/caffeinity-skills) |
 | [skill-release-mod](https://skills.caffeinity.com/skill-release-mod/) · Claude Code mod | Holds gh release create and npm publish in Claude Code until prompts-to-skill-release has run the skill's test cases since your last edit. [source](https://github.com/arm-pz/caffeinity-skills) |
 | [tune-and-ship](https://skills.caffeinity.com/tune-and-ship/) | One published skill at a time, all the way through: tuned with tune-skill, every version, flag and price checked against its source, listing polished, released in one PR, then the site page and marketplace copy confirmed live. [source](https://github.com/arm-pz/caffeinity-skills) |
+| [straight-prose](https://skills.caffeinity.com/straight-prose/) | Writes and edits prose so it reads like a specific person wrote it and carries no stock AI patterns such as inflated significance, promotional wording, vague attribution, negative parallelisms, forced threes, em dashes, chatbot… [source](https://github.com/arm-pz/straight-prose) |
 
 ### Publish & Discover
 
@@ -80,6 +81,8 @@ _56 skills and 7 mods in 9 groups. This block is generated from the [skills site
 | [consistent-code-review](https://skills.caffeinity.com/consistent-code-review/) | Perform a deterministic, evidence-backed code review that produces the same findings on re-runs of unchanged code, reconciled against a previous report when one is supplied. [source](https://github.com/arm-pz/consistent-code-review) |
 | [harness-audit](https://skills.caffeinity.com/harness-audit/) | Audits an existing coding-agent harness (CLAUDE.md, AGENTS.md, rules files, hooks, MCP and tool config, skills) against the project's past Claude Code sessions, then returns a ranked findings report plus proposed diffs applied only after… [source](https://github.com/arm-pz/harness-audit) |
 | [setup-claude-advisor](https://skills.caffeinity.com/setup-claude-advisor/) | Configure Claude Code for quota-optimised model tiering: Sonnet as the main session model, Opus as the on-call advisor, Haiku for read-only subagents, and Sonnet for code-editing subagents. [source](https://github.com/arm-pz/setup-claude-advisor) |
+| [insights-to-prompts](https://skills.caffeinity.com/insights-to-prompts/) | Turn a Claude Code /insights report into before/after rewrites of the prompts that caused friction — both the prompts you type in sessions and the prompt text inside your own skills. [source](https://github.com/arm-pz/insights-to-prompts) |
+| [ship-second-brain](https://skills.caffeinity.com/ship-second-brain/) | Builds and maintains a team second brain in one markdown folder: raw issues, PRs, specs and call notes saved first, cut into one-idea notes with a source and confidence (seen, verified, opinion), linked, verified against the source, summed… [source](https://github.com/arm-pz/ship-second-brain) |
 
 ### SEO & Search
 
@@ -114,6 +117,7 @@ _56 skills and 7 mods in 9 groups. This block is generated from the [skills site
 | [applicant-kit](https://skills.caffeinity.com/applicant-kit/) | Writes the better version: decoded job description, tailored resume, bullets rewritten as action-task-result-impact, honest keyword placement, five summaries, a LinkedIn rewrite and twenty interview answers, all built from real experience. [source](https://github.com/arm-pz/applicant-kit) |
 | [application-pilot](https://skills.caffeinity.com/application-pilot/) | Runs the job search around the applications: turns role criteria into a live shortlist, scores each role for fit with evidence, keeps a reviewable tracker with submission and follow-up dates, flags roles that have gone quiet, drafts the follow-up and the interview briefing, and reads the funnel weekly. [source](https://github.com/arm-pz/application-pilot) |
 | [career-track](https://skills.caffeinity.com/career-track/) | For the moves around a career: a positioning line you can repeat, the case for the next level, review and promotion narratives, salary negotiation scripts and a ninety-day plan. [source](https://github.com/arm-pz/career-track) |
+| [prompts-to-workflow](https://skills.caffeinity.com/prompts-to-workflow/) | Turns a pasted batch of prompts that together do one multi-step job into a workflow, then decides how to split it into skills. [source](https://github.com/arm-pz/prompts-to-workflow) |
 
 ### Thinking & Learning
 
