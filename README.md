@@ -19,7 +19,7 @@ I build cloud-native services on .NET and AWS, and custom MCP servers that conne
 On the side I write plain-markdown skills that teach AI coding agents (Claude Code, Cursor, Codex) one craft each. They are free, need no API keys and have nothing to run. Every skill states what it will not do, and none applies changes without your approval.
 
 <!-- skills:start -->
-_60 skills and 7 mods in 9 groups. This block is generated from the [skills site](https://skills.caffeinity.com) manifest; edit the manifest, not this README._
+_63 skills and 7 mods in 9 groups. This block is generated from the [skills site](https://skills.caffeinity.com) manifest; edit the manifest, not this README._
 
 ### Start Here
 
@@ -42,6 +42,8 @@ _60 skills and 7 mods in 9 groups. This block is generated from the [skills site
 | [skill-release-mod](https://skills.caffeinity.com/skill-release-mod/) · Claude Code mod | Holds gh release create and npm publish in Claude Code until prompts-to-skill-release has run the skill's test cases since your last edit. [source](https://github.com/arm-pz/caffeinity-skills) |
 | [tune-and-ship](https://skills.caffeinity.com/tune-and-ship/) | One published skill at a time, all the way through: tuned with tune-skill, every version, flag and price checked against its source, listing polished, released in one PR, then the site page and marketplace copy confirmed live. [source](https://github.com/arm-pz/caffeinity-skills) |
 | [straight-prose](https://skills.caffeinity.com/straight-prose/) | Writes and edits prose so it reads like a specific person wrote it and carries no stock AI patterns such as inflated significance, promotional wording, vague attribution, negative parallelisms, forced threes, em dashes, chatbot… [source](https://github.com/arm-pz/straight-prose) |
+| [get-listed](https://skills.caffeinity.com/get-listed/) | Finds the best-of, top-X and alternatives articles, and the GitHub awesome-lists, that name your competitors but leave you out, finds each one's author or submission rules, and drafts a pitch, pull request or issue-form answer per list… [source](https://github.com/arm-pz/get-listed) |
+| [replace-dead-tools](https://skills.caffeinity.com/replace-dead-tools/) | Checks every tool named on best-of and alternatives lists for shutdowns, parked domains, acquisitions and abandonment, confirms each verdict with evidence a person can open, and drafts a "replace the dead entry with us" pitch per affected… [source](https://github.com/arm-pz/replace-dead-tools) |
 
 ### Publish & Discover
 
@@ -56,6 +58,7 @@ _60 skills and 7 mods in 9 groups. This block is generated from the [skills site
 | [seo-sweep](https://skills.caffeinity.com/seo-sweep/) | Runs the Skillsmith by Caffeinity SEO skills on a site you own, in order, fixes what they find in the site's code, proves each fix with a re-crawl, and turns every defect a skill shows along the way into a tested fix to that skill, chaining seo-crawl… [source](https://github.com/arm-pz/seo-sweep) |
 | [get-indexed](https://skills.caffeinity.com/get-indexed/) | Tells search engines about a site's new and changed pages through every channel that has an API, and lists the few steps that still need a person. [source](https://github.com/arm-pz/get-indexed) |
 | [portable-harness](https://skills.caffeinity.com/portable-harness/) | Set up a repo so any coding agent (Claude Code, Codex, Cursor) behaves the same wherever it runs - writes 12 working rules at the top of CLAUDE.md or AGENTS.md, adds map sections only where the agent keeps getting things wrong, and… [source](https://github.com/arm-pz/portable-harness) |
+| [find-partners](https://skills.caffeinity.com/find-partners/) | Finds real, non-competing businesses and publishers that share your audience, such as complementary tools, agencies, newsletters and podcasts, screens out link sellers, picks one collaboration per partner (guest post, expert quote, co-made… [source](https://github.com/arm-pz/find-partners) |
 
 ### Build & Ship
 
