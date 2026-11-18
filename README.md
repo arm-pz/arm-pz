@@ -19,7 +19,7 @@ I build cloud-native services on .NET and AWS, and custom MCP servers that conne
 On the side I write plain-markdown skills that teach AI coding agents (Claude Code, Cursor, Codex) one craft each. They are free, need no API keys and have nothing to run. Every skill states what it will not do, and none applies changes without your approval.
 
 <!-- skills:start -->
-_63 skills and 7 mods in 9 groups. This block is generated from the [skills site](https://skills.caffeinity.com) manifest; edit the manifest, not this README._
+_64 skills and 7 mods in 9 groups. This block is generated from the [skills site](https://skills.caffeinity.com) manifest; edit the manifest, not this README._
 
 ### Start Here
 
@@ -121,6 +121,7 @@ _63 skills and 7 mods in 9 groups. This block is generated from the [skills site
 | [application-pilot](https://skills.caffeinity.com/application-pilot/) | Runs the job search around the applications: turns role criteria into a live shortlist, scores each role for fit with evidence, keeps a reviewable tracker with submission and follow-up dates, flags roles that have gone quiet, drafts the follow-up and the interview briefing, and reads the funnel weekly. [source](https://github.com/arm-pz/application-pilot) |
 | [career-track](https://skills.caffeinity.com/career-track/) | For the moves around a career: a positioning line you can repeat, the case for the next level, review and promotion narratives, salary negotiation scripts and a ninety-day plan. [source](https://github.com/arm-pz/career-track) |
 | [prompts-to-workflow](https://skills.caffeinity.com/prompts-to-workflow/) | Turns a pasted batch of prompts that together do one multi-step job into a workflow, then decides how to split it into skills. [source](https://github.com/arm-pz/prompts-to-workflow) |
+| [opus-playbook](https://skills.caffeinity.com/opus-playbook/) | Playbook for a lead model (Fable) that deputes a task to Opus, or to any subagent or worker session. [source](https://github.com/arm-pz/opus-playbook) |
 
 ### Thinking & Learning
 
