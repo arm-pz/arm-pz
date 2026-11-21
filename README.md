@@ -19,7 +19,7 @@ I build cloud-native services on .NET and AWS, and custom MCP servers that conne
 On the side I write plain-markdown skills that teach AI coding agents (Claude Code, Cursor, Codex) one craft each. They are free, need no API keys and have nothing to run. Every skill states what it will not do, and none applies changes without your approval.
 
 <!-- skills:start -->
-_64 skills and 7 mods in 9 groups. This block is generated from the [skills site](https://skills.caffeinity.com) manifest; edit the manifest, not this README._
+_68 skills and 7 mods in 9 groups. This block is generated from the [skills site](https://skills.caffeinity.com) manifest; edit the manifest, not this README._
 
 ### Start Here
 
@@ -95,6 +95,10 @@ _64 skills and 7 mods in 9 groups. This block is generated from the [skills site
 | [keyword-guard](https://skills.caffeinity.com/keyword-guard/) | Plans topic clusters and kills keyword cannibalization so exactly one page wins each query. [source](https://github.com/arm-pz/keyword-guard) |
 | [keyword-resolver](https://skills.caffeinity.com/keyword-resolver/) | Resolves keyword cannibalization with Keyword-Guard, then rewrites titles, H1s and meta descriptions with Wordsmith. [source](https://github.com/arm-pz/keyword-resolver) |
 | [seo-polish](https://skills.caffeinity.com/seo-polish/) | seo-crawl's measured findings, an optional seo-audit diagnosis, then Wordsmith drafts optimized alternatives for every High and Medium finding: titles, meta descriptions, headings and internal-link anchors. [source](https://github.com/arm-pz/seo-polish) |
+| [diagnose-search-visibility](https://skills.caffeinity.com/diagnose-search-visibility/) | Diagnoses why a homepage or service page is missing from Google or AI answers, then hands each supported finding to the right repair skill. [source](https://github.com/arm-pz/diagnose-search-visibility) |
+| [verify-search-visibility](https://skills.caffeinity.com/verify-search-visibility/) | Verifies live SEO fixes and measures changes in Google performance or AI citations against a comparable baseline. [source](https://github.com/arm-pz/verify-search-visibility) |
+| [check-skill-visibility](https://skills.caffeinity.com/check-skill-visibility/) | Checks why individual skill pages are missing from Google and produces URL-level findings for repair. [source](https://github.com/arm-pz/check-skill-visibility) |
+| [fix-skill-visibility](https://skills.caffeinity.com/fix-skill-visibility/) | Applies and verifies fixes for individual skill pages using evidence from a completed visibility audit. [source](https://github.com/arm-pz/fix-skill-visibility) |
 
 ### Writing & Content
 
@@ -144,7 +148,7 @@ Skills hand work to each other in brews (workflows). Start with [caffeinity-rout
 - **Brew 1 · Pour-over:** Build a skill and make it installable: draft-skill or prompts-to-skill → tune-skill → prompts-to-skill-release → skill-to-mod (optional)
 - **Brew 2 · Bloom:** Get a repo, skill or plugin found: findable → publish-pipeline → upstream-check → get-indexed (optional)
 - **Brew 3 · Espresso:** Decide whether a site is safe to launch: web-preflight → pre-ship-security-red-team → pre-ship-performance-audit → release-gate-chair or release-gate-ledger or release-gate-validator
-- **Brew 4 · Cold brew:** Grow organic search traffic: seo-crawl → keyword-guard → wordsmith → pre-ship-performance-audit (optional) → platform-content (optional) → get-indexed (optional)
+- **Brew 4 · Cold brew:** Grow organic search traffic: diagnose-search-visibility → seo-crawl → keyword-guard → wordsmith → pre-ship-performance-audit (optional) → platform-content (optional) → get-indexed (optional) → verify-search-visibility
 - **Brew 5 · French press:** Land a job: recruiter-lens → applicant-kit → application-pilot → career-track (optional)
 - **Brew 6 · Cupping:** Make a decision: research-brief → data-readout (optional) → crash-test or do-better → strategy-memo
 - **Brew 7 · Slow drip:** Learn a skill: topic-primer → study-system → course-builder (optional)
