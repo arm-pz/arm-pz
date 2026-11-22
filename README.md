@@ -19,7 +19,7 @@ I build cloud-native services on .NET and AWS, and custom MCP servers that conne
 On the side I write plain-markdown skills that teach AI coding agents (Claude Code, Cursor, Codex) one craft each. They are free, need no API keys and have nothing to run. Every skill states what it will not do, and none applies changes without your approval.
 
 <!-- skills:start -->
-_68 skills and 7 mods in 9 groups. This block is generated from the [skills site](https://skills.caffeinity.com) manifest; edit the manifest, not this README._
+_69 skills and 7 mods in 9 groups. This block is generated from the [skills site](https://skills.caffeinity.com) manifest; edit the manifest, not this README._
 
 ### Start Here
 
@@ -44,6 +44,7 @@ _68 skills and 7 mods in 9 groups. This block is generated from the [skills site
 | [straight-prose](https://skills.caffeinity.com/straight-prose/) | Writes and edits prose so it reads like a specific person wrote it and carries no stock AI patterns such as inflated significance, promotional wording, vague attribution, negative parallelisms, forced threes, em dashes, chatbot… [source](https://github.com/arm-pz/straight-prose) |
 | [get-listed](https://skills.caffeinity.com/get-listed/) | Finds the best-of, top-X and alternatives articles, and the GitHub awesome-lists, that name your competitors but leave you out, finds each one's author or submission rules, and drafts a pitch, pull request or issue-form answer per list… [source](https://github.com/arm-pz/get-listed) |
 | [replace-dead-tools](https://skills.caffeinity.com/replace-dead-tools/) | Checks every tool named on best-of and alternatives lists for shutdowns, parked domains, acquisitions and abandonment, confirms each verdict with evidence a person can open, and drafts a "replace the dead entry with us" pitch per affected… [source](https://github.com/arm-pz/replace-dead-tools) |
+| [plugin-directory-gate](https://skills.caffeinity.com/plugin-directory-gate/) | Checks a Claude Code plugin folder against the Claude plugin directory's submission rules and returns GO or HOLD, with each blocking issue, policy hold and warning as rule, file:line and fix (scripts, install lines even in docs… [source](https://github.com/arm-pz/plugin-directory-gate) |
 
 ### Publish & Discover
 
