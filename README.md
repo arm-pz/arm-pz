@@ -19,7 +19,7 @@ I build cloud-native services on .NET and AWS, and custom MCP servers that conne
 On the side I write plain-markdown skills that teach AI coding agents (Claude Code, Cursor, Codex) one craft each. They are free, need no API keys and have nothing to run. Every skill states what it will not do, and none applies changes without your approval.
 
 <!-- skills:start -->
-_69 skills and 7 mods in 9 groups. This block is generated from the [skills site](https://skills.caffeinity.com) manifest; edit the manifest, not this README._
+_71 skills and 7 mods in 9 groups. This block is generated from the [skills site](https://skills.caffeinity.com) manifest; edit the manifest, not this README._
 
 ### Start Here
 
@@ -45,6 +45,7 @@ _69 skills and 7 mods in 9 groups. This block is generated from the [skills site
 | [get-listed](https://skills.caffeinity.com/get-listed/) | Finds the best-of, top-X and alternatives articles, and the GitHub awesome-lists, that name your competitors but leave you out, finds each one's author or submission rules, and drafts a pitch, pull request or issue-form answer per list… [source](https://github.com/arm-pz/get-listed) |
 | [replace-dead-tools](https://skills.caffeinity.com/replace-dead-tools/) | Checks every tool named on best-of and alternatives lists for shutdowns, parked domains, acquisitions and abandonment, confirms each verdict with evidence a person can open, and drafts a "replace the dead entry with us" pitch per affected… [source](https://github.com/arm-pz/replace-dead-tools) |
 | [plugin-directory-gate](https://skills.caffeinity.com/plugin-directory-gate/) | Checks a Claude Code plugin folder against the Claude plugin directory's submission rules and returns GO or HOLD, with each blocking issue, policy hold and warning as rule, file:line and fix (scripts, install lines even in docs… [source](https://github.com/arm-pz/plugin-directory-gate) |
+| [skill-eval-suite](https://skills.caffeinity.com/skill-eval-suite/) | Builds and runs the eval suite for a recurring agent loop or skill - about 5% golden, 80% real prompts graded on trajectory, 15% author-judged, with must-do, must-not and keep-working cases. [source](https://github.com/arm-pz/skill-eval-suite) |
 
 ### Publish & Discover
 
@@ -87,6 +88,7 @@ _69 skills and 7 mods in 9 groups. This block is generated from the [skills site
 | [setup-claude-advisor](https://skills.caffeinity.com/setup-claude-advisor/) | Configure Claude Code for quota-optimised model tiering: Sonnet as the main session model, Opus as the on-call advisor, Haiku for read-only subagents, and Sonnet for code-editing subagents. [source](https://github.com/arm-pz/setup-claude-advisor) |
 | [insights-to-prompts](https://skills.caffeinity.com/insights-to-prompts/) | Turn a Claude Code /insights report into before/after rewrites of the prompts that caused friction — both the prompts you type in sessions and the prompt text inside your own skills. [source](https://github.com/arm-pz/insights-to-prompts) |
 | [ship-second-brain](https://skills.caffeinity.com/ship-second-brain/) | Builds and maintains a team second brain in one markdown folder: raw issues, PRs, specs and call notes saved first, cut into one-idea notes with a source and confidence (seen, verified, opinion), linked, verified against the source, summed… [source](https://github.com/arm-pz/ship-second-brain) |
+| [address-findings](https://skills.caffeinity.com/address-findings/) | Fixes the CRITICAL and HIGH findings in a consistent-code-review report for one pull request, staying inside the files that PR already changes, then reports each finding as fixed, won't fix (with evidence) or escalate. [source](https://github.com/arm-pz/address-findings) |
 
 ### SEO & Search
 
