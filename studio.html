@@ -1373,7 +1373,7 @@ function caption(who, text, me = false){
 }
 function say(html){
   const text = plain(html);
-  caption('ArmBot', text); setStatus('SPEAKING'); setMode('speaking');
+  caption('Abdul (AI voice)', capText(text)); setStatus('SPEAKING'); setMode('speaking');
   const done = () => { if (C.state !== 'live') return; setMode(''); setStatus('YOUR TURN · ASK ANYTHING'); };
   if (synth && C.voice){
     try {
@@ -1392,6 +1392,36 @@ function say(html){
   }
   setTimeout(done, Math.min(6000, 900 + text.length * 38));
 }
+const VOICE_DIR = window.VOICE_DIR || 'assets/voice/';
+const clipCache = {};
+function clip(id){
+  if (!clipCache[id]){ const a = new Audio(); a.preload = 'auto'; a.src = VOICE_DIR + id + '.mp3'; clipCache[id] = a; }
+  return clipCache[id];
+}
+function sayLine(id){
+  const text = VOICE_LINES[id] || VOICE_LINES.fallback;
+  if (!C.voice){ say(text); return; }
+  const a = clip(id); let started = false, settled = false;
+  const fail = () => { if (settled) return; settled = true; say(text); };          // no clip yet -> browser voice
+  const done = () => { if (C.state !== 'live') return; setMode(''); setStatus('YOUR TURN · ASK ANYTHING'); };
+  const start = () => {
+    if (settled) return; settled = true; started = true;
+    try { synth && synth.cancel(); } catch(e){}
+    clearTimeout(C.typeT);
+    const cap = $('#callCap'); cap.classList.remove('me'); cap.querySelector('em').textContent = 'Abdul (AI voice):';
+    const el = $('#callCapText'); el.textContent = ''; const shown = capText(text);
+    const dur = (isFinite(a.duration) && a.duration > 0 ? a.duration : shown.length / 14) * 1000;
+    const step = Math.max(12, dur / shown.length); let i = 0;
+    const type = () => { i += 1; el.textContent = shown.slice(0, i); if (i < shown.length) C.typeT = setTimeout(type, step); };
+    type(); setStatus('SPEAKING'); setMode('speaking');
+    a.onended = done; a.currentTime = 0;
+    a.play().catch(() => { started = false; settled = false; fail(); });
+  };
+  C.audio = a;
+  if (a.readyState >= 3) start();
+  else { a.oncanplaythrough = start; a.onerror = fail; a.load(); setTimeout(() => { if (!started) fail(); }, 2500); }
+}
+function stopClip(){ if (C.audio){ try { C.audio.pause(); C.audio.currentTime = 0; } catch(e){} } }
 function fmt(ms){ const s = Math.floor(ms/1000); return [s/3600|0, (s/60|0)%60, s%60].map(n => String(n).padStart(2,'0')).join(':'); }
 function startCall(){
   if (C.state !== 'idle') return;
@@ -1404,14 +1434,17 @@ function startCall(){
     C.state = 'live'; callEl.classList.add('live'); C.t0 = Date.now();
     C.timer = setInterval(() => $('#callTime').textContent = fmt(Date.now() - C.t0), 500);
     tone([660,880], .09, .02);
-    say("Hey, this is ArmBot, Abdul Rahman's AI assistant. Ask me about his ten years in .NET and AWS, the C# MCP servers, SkillSmith, or how to reach him.");
+    Object.keys(VOICE_LINES).forEach(clip);   // warm the cache for all clips
+    sayLine('greeting');
   }, 1900);
 }
 function endCall(){
   if (C.state === 'idle') return;
   C.state = 'ending'; clearInterval(C.timer); clearTimeout(C.typeT);
   try { synth && synth.cancel(); } catch(e){} try { C.rec && C.rec.abort(); } catch(e){}
-  setMode(''); callEl.classList.remove('live'); setStatus('CALL ENDED'); caption('ArmBot', 'Thanks for calling. Talk soon!');
+  stopClip();
+  setMode(''); callEl.classList.remove('live'); setStatus('CALL ENDED'); caption('Abdul (AI voice)', capText(VOICE_LINES.goodbye));
+  if (C.voice){ const g = clip('goodbye'); if (g.readyState >= 2) g.play().catch(() => {}); }
   tone([480,360], .14, .03);
   setTimeout(() => { stageEl.classList.remove('calling'); C.state = 'idle'; }, 1300);
 }
@@ -1419,7 +1452,8 @@ function callAsk(q){
   q = q.trim(); if (!q || C.state !== 'live') return;
   try { synth && synth.cancel(); } catch(e){}
   caption('You', q, true); setStatus('THINKING…'); setMode('');
-  setTimeout(() => C.state === 'live' && say(botReply(q)), 650);
+  stopClip();
+  setTimeout(() => C.state === 'live' && sayLine(botMatch(q)), 650);
 }
 $('#callOpen').addEventListener('click', startCall);
 $('#callEnd').addEventListener('click', endCall);
@@ -1430,7 +1464,7 @@ $('#callCC').addEventListener('click', () => { C.caps = !C.caps; $('#callCC').cl
 $('#callSpk').addEventListener('click', () => {
   C.voice = !C.voice; const b = $('#callSpk'); b.classList.toggle('on', C.voice); b.setAttribute('aria-pressed', C.voice);
   b.setAttribute('aria-label', C.voice ? 'Bot voice on' : 'Bot voice off'); b.querySelector('use').setAttribute('href', C.voice ? '#ic-vol' : '#ic-mute');
-  if (!C.voice) try { synth && synth.cancel(); } catch(e){}
+  if (!C.voice){ try { synth && synth.cancel(); } catch(e){} stopClip(); }
 });
 $('#callMic').addEventListener('click', () => {
   if (C.state !== 'live') return;
@@ -1439,7 +1473,7 @@ $('#callMic').addEventListener('click', () => {
   if (window.NO_LIVE_FRAMES) return fallback("The mic is blocked in this preview. It works on the live site in Chrome or Edge, so type your question here for now.");
   if (!SR) return fallback("This browser has no speech input. Use Chrome or Edge, or type your question.");
   try {
-    try { synth && synth.cancel(); } catch(e){}
+    try { synth && synth.cancel(); } catch(e){} stopClip();
     const r = new SR(); C.rec = r; r.lang = 'en-IN'; r.interimResults = true; r.maxAlternatives = 1;
     $('#callMic').classList.add('rec'); setMode('listening'); setStatus('LISTENING…'); caption('You', '…', true);
     let final = '';
@@ -1481,23 +1515,55 @@ function countUp(){
 
 /* ======================= ARMBOT ======================= */
 const BOT = [
-  { k:['experience','years','career','background','work'], a:"10 years of enterprise delivery: Cognizant (2016–2020), Infosys (2020–2021), Accenture on the Comcast programme (2021–2024), and Crezantium since Oct 2024, remote from Coimbatore." },
-  { k:['mcp','model context'], a:"He builds MCP servers in C# so AI agents can work safely with approved business data. At Crezantium that covered trade workflows and a procurement / sales lead tracker." },
-  { k:['skillsmith','skills','skill'], a:"SkillSmith is a free, open-source library of 80+ plain-markdown SKILL.md agent skills, 12 chained workflows and 7 local Claude Code mods. See <a href='https://skillsmith.tech' target='_blank' rel='noopener'>skillsmith.tech</a>." },
-  { k:['deep-tutor','tutor','teach'], a:"deep-tutor is an open-source teaching skill that turns any topic into structured 8-mode instruction: foundations, staged curricula, readiness checks, plain explanations and graded quizzes." },
-  { k:['aws','cloud','lambda','terraform'], a:"AWS Lambda, SQS, SNS, S3, DynamoDB, Cognito and Glue, with Terraform and CloudFormation. At Accenture he built AWS microservices and ASP.NET Core REST APIs with automated CI/CD." },
-  { k:['coach','mentor','enable','training'], a:"AI coaching and enablement is the focus: turning Claude Code, Codex and Cursor into repeatable team habits. He also mentored junior developers through weekly code reviews at Accenture." },
-  { k:['award','accenture','champion'], a:"Client Champion Award at Accenture (2022–2023), top 5%." },
-  { k:['kaapi','coffee','caffeinity'], a:"Kaapi by Caffeinity is a live web app at <a href='https://kaapi.caffeinity.com' target='_blank' rel='noopener'>kaapi.caffeinity.com</a>. The brass dabara on the desk links there too." },
-  { k:['shu','atlas','acu','wu xing'], a:"Shu Atlas (五輸) has an interactive Five Elements cycle, a 12-channel metro map of 65 points, anatomical overlays, a 10-module course and a 60-point recall quiz: <a href='https://acu.caffeinity.com' target='_blank' rel='noopener'>acu.caffeinity.com</a>." },
-  { k:['contact','hire','email','phone','reach','talk','linkedin','twitter','x'], a:"The best way to reach him is LinkedIn <a href='https://linkedin.com/in/itsarm' target='_blank' rel='noopener'>/in/itsarm</a> or X <a href='https://x.com/abdulrahmanpz' target='_blank' rel='noopener'>@abdulrahmanpz</a>. He's available remote, as an immediate joiner." },
-  { k:['education','degree','college','study'], a:"Integrated M.Sc. in Software Engineering, Sri Krishna College of Engineering and Technology, Coimbatore (2010–2015)." },
-  { k:['ollama','local','prompt'], a:"He designs agent instructions and local LLM workflows with Ollama, plus preflight checks for tool contracts, failure cases and instruction quality." },
-  { k:['location','where','based','remote','relocat'], a:"Based in Coimbatore, India. Works remote and can join immediately." }
+  { id:'experience', k:['experience','years','career','background','work'], a:"10 years of enterprise delivery: Cognizant (2016–2020), Infosys (2020–2021), Accenture on the Comcast programme (2021–2024), and Crezantium since Oct 2024, remote from Coimbatore." },
+  { id:'mcp', k:['mcp','model context'], a:"He builds MCP servers in C# so AI agents can work safely with approved business data. At Crezantium that covered trade workflows and a procurement / sales lead tracker." },
+  { id:'skillsmith', k:['skillsmith','skills','skill'], a:"SkillSmith is a free, open-source library of 80+ plain-markdown SKILL.md agent skills, 12 chained workflows and 7 local Claude Code mods. See <a href='https://skillsmith.tech' target='_blank' rel='noopener'>skillsmith.tech</a>." },
+  { id:'deeptutor', k:['deep-tutor','tutor','teach'], a:"deep-tutor is an open-source teaching skill that turns any topic into structured 8-mode instruction: foundations, staged curricula, readiness checks, plain explanations and graded quizzes." },
+  { id:'aws', k:['aws','cloud','lambda','terraform'], a:"AWS Lambda, SQS, SNS, S3, DynamoDB, Cognito and Glue, with Terraform and CloudFormation. At Accenture he built AWS microservices and ASP.NET Core REST APIs with automated CI/CD." },
+  { id:'coaching', k:['coach','mentor','enable','training'], a:"AI coaching and enablement is the focus: turning Claude Code, Codex and Cursor into repeatable team habits. He also mentored junior developers through weekly code reviews at Accenture." },
+  { id:'award', k:['award','accenture','champion'], a:"Client Champion Award at Accenture (2022–2023), top 5%." },
+  { id:'kaapi', k:['kaapi','coffee','caffeinity'], a:"Kaapi by Caffeinity is a live web app at <a href='https://kaapi.caffeinity.com' target='_blank' rel='noopener'>kaapi.caffeinity.com</a>. The brass dabara on the desk links there too." },
+  { id:'shuatlas', k:['shu','atlas','acu','wu xing'], a:"Shu Atlas (五輸) has an interactive Five Elements cycle, a 12-channel metro map of 65 points, anatomical overlays, a 10-module course and a 60-point recall quiz: <a href='https://acu.caffeinity.com' target='_blank' rel='noopener'>acu.caffeinity.com</a>." },
+  { id:'contact', k:['contact','hire','email','phone','reach','talk','linkedin','twitter','x'], a:"The best way to reach him is LinkedIn <a href='https://linkedin.com/in/itsarm' target='_blank' rel='noopener'>/in/itsarm</a> or X <a href='https://x.com/abdulrahmanpz' target='_blank' rel='noopener'>@abdulrahmanpz</a>. He's available remote, as an immediate joiner." },
+  { id:'education', k:['education','degree','college','study'], a:"Integrated M.Sc. in Software Engineering, Sri Krishna College of Engineering and Technology, Coimbatore (2010–2015)." },
+  { id:'ollama', k:['ollama','local','prompt'], a:"He designs agent instructions and local LLM workflows with Ollama, plus preflight checks for tool contracts, failure cases and instruction quality." },
+  { id:'location', k:['location','where','based','remote','relocat'], a:"Based in Coimbatore, India. Works remote and can join immediately." }
 ];
 const SUGG = ['What does he do?','MCP servers','SkillSmith','Experience','How to contact?'];
 const chat = $('#chat'), log = $('#chatLog');
 function addMsg(html, who){ const d = document.createElement('div'); d.className = 'msg ' + who; d.innerHTML = html; log.appendChild(d); log.scrollTop = log.scrollHeight; return d; }
+/* Lines spoken in Abdul's cloned voice. Each one plays assets/voice/<id>.mp3 when that clip
+   exists, and falls back to the browser's speech voice when it doesn't. Keep VOICE-SCRIPT.md in sync. */
+const VOICE_LINES = {
+  greeting:   "Hey, this is Abdul Rahman. Well, an AI version of my voice. Ask me about my ten years in dot NET and AWS, the C sharp MCP servers I build, SkillSmith, or how to reach me.",
+  about:      "I'm an Applied AI and Cloud Engineer. I coach teams on using AI coding tools well, I integrate AI into real business systems, and I bring ten years of C sharp, dot NET and AWS experience to it.",
+  experience: "I've spent ten years in enterprise delivery. Cognizant from 2016, then Infosys, then Accenture on the Comcast programme. Since late 2024 I've been at Crezantium, working remotely from Coimbatore.",
+  mcp:        "I build MCP servers in C sharp, so AI agents can work safely with approved business data. At Crezantium that covered trade workflows and a procurement and sales lead tracker.",
+  skillsmith: "SkillSmith is my free, open-source library of more than eighty agent skills, written as plain markdown, plus twelve chained workflows and seven Claude Code mods. You'll find it at skillsmith dot tech.",
+  deeptutor:  "deep-tutor is an open-source teaching skill I wrote. It turns any topic into structured lessons across eight modes, from foundations and staged curricula to readiness checks and graded quizzes.",
+  aws:        "On AWS I work with Lambda, SQS, SNS, S3, DynamoDB, Cognito and Glue, with Terraform and CloudFormation for infrastructure. At Accenture I built AWS microservices and ASP dot NET Core APIs with automated CI CD.",
+  coaching:   "AI coaching and enablement is my focus. I help teams turn Claude Code, Codex and Cursor into simple, repeatable habits. I also mentored junior developers through weekly code reviews at Accenture.",
+  award:      "At Accenture I received the Client Champion Award for 2022 to 2023, which put me in the top five percent.",
+  kaapi:      "Kaapi by Caffeinity is a live web app of mine at kaapi dot caffeinity dot com. The brass dabara on my desk links there too.",
+  shuatlas:   "Shu Atlas is my interactive guide to the Five Elements. It has a twelve-channel metro map of sixty-five points, anatomical overlays, a ten-module course and a sixty-point recall quiz.",
+  contact:    "The best way to reach me is LinkedIn, at slash in slash its arm, or on X at abdul rahman p z. I'm available for remote work and can join immediately.",
+  education:  "I studied an Integrated M.Sc. in Software Engineering at Sri Krishna College of Engineering and Technology in Coimbatore, from 2010 to 2015.",
+  ollama:     "I design agent instructions and local model workflows with Ollama, along with preflight checks for tool contracts, failure cases and instruction quality.",
+  location:   "I'm based in Coimbatore, India. I work remotely and can join immediately.",
+  fallback:   "I can only answer from what's on this site. Try asking about my experience, MCP servers, SkillSmith, AWS, coaching, or how to get in touch.",
+  goodbye:    "Thanks for calling. Talk soon!"
+};
+// Lines are written for the ear ("C sharp", "dot NET"); captions show the written form.
+const CAP_FIX = [[/ASP dot NET/g,'ASP.NET'],[/\bdot NET\b/g,'.NET'],[/C sharp/g,'C#'],[/skillsmith dot tech/gi,'skillsmith.tech'],
+  [/kaapi dot caffeinity dot com/gi,'kaapi.caffeinity.com'],[/slash in slash its arm/gi,'/in/itsarm'],[/abdul rahman p z/gi,'@abdulrahmanpz'],
+  [/CI CD/g,'CI/CD'],[/more than eighty/g,'80+'],[/twelve chained/g,'12 chained'],[/seven Claude/g,'7 Claude'],[/ten years/g,'10 years']];
+const capText = t => CAP_FIX.reduce((a, [re, to]) => a.replace(re, to), t);
+function botMatch(q){
+  const l = q.toLowerCase();
+  if (/what does|who is|who are|about|summary|role|yourself/.test(l)) return 'about';
+  const hit = BOT.find(b => b.k.some(k => l.includes(k)));
+  return hit ? hit.id : 'fallback';
+}
 function botReply(q){
   const l = q.toLowerCase();
   if (/what does|who is|about|summary|role/.test(l)) return "Abdul Rahman is an Applied AI & Cloud Engineer: an AI coach focused on applied AI integration, mentoring and enablement, with 10 years of C#/.NET and AWS behind it.";
