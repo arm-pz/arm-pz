@@ -25,7 +25,7 @@ _71 skills and 7 mods in 9 groups. This block is generated from the [skills site
 
 | Skill | What it does |
 |---|---|
-| [caffeinity-routing](https://skills.caffeinity.com/caffeinity-routing/) | Start here. Tell it the outcome you want and it picks one of twelve brews (workflows), lists the skills in order with what each hands the next, and names the ones you have not installed instead of improvising their work. [source](https://github.com/arm-pz/caffeinity-skills) |
+| [workflow-router](https://skills.caffeinity.com/workflow-router/) | Start here. Tell it the outcome you want and it picks one of twelve workflows, lists the skills in order with what each hands the next, and names the ones you have not installed instead of improvising their work. [source](https://github.com/arm-pz/caffeinity-skills) |
 
 ### Skill Authoring
 
@@ -148,18 +148,18 @@ _71 skills and 7 mods in 9 groups. This block is generated from the [skills site
 
 Skills hand work to each other in brews (workflows). Start with [caffeinity-routing](https://skills.caffeinity.com/caffeinity-routing/) if you are not sure which you need.
 
-- **Brew 1 · Pour-over:** Build a skill and make it installable: draft-skill or prompts-to-skill → tune-skill → prompts-to-skill-release → skill-to-mod (optional)
-- **Brew 2 · Bloom:** Get a repo, skill or plugin found: findable → publish-pipeline → upstream-check → get-indexed (optional)
-- **Brew 3 · Espresso:** Decide whether a site is safe to launch: web-preflight → pre-ship-security-red-team → pre-ship-performance-audit → release-gate-chair or release-gate-ledger or release-gate-validator
-- **Brew 4 · Cold brew:** Grow organic search traffic: diagnose-search-visibility → seo-crawl → keyword-guard → wordsmith → pre-ship-performance-audit (optional) → platform-content (optional) → get-indexed (optional) → verify-search-visibility
-- **Brew 5 · French press:** Land a job: recruiter-lens → applicant-kit → application-pilot → career-track (optional)
-- **Brew 6 · Cupping:** Make a decision: research-brief → data-readout (optional) → crash-test or do-better → strategy-memo
-- **Brew 7 · Slow drip:** Learn a skill: topic-primer → study-system → course-builder (optional)
-- **Brew 8 · Nitro:** Run cold outbound: cold-email-list-gate → cold-email-ops → sales-copy
-- **Brew 9 · Moka pot:** Launch a one-person product: solo-income-blueprint → site-prompt → production-code → paper-trail → release-gate-chair → platform-content
-- **Brew 10 · Descale:** Maintain the skill family: tune-skill → prompts-to-skill-release (optional) → upstream-check
-- **Brew 11 · Estate roast:** Stand up or audit a skill estate: skill-estate
-- **Brew 12 · Dial-in:** Set up a coding agent for a repo: portable-harness or harness-audit → setup-claude-advisor (optional) → diagnose-usage (optional) → choose-effort (optional)
+- **Brew 1 · build-a-skill:** Build a skill and make it installable: draft-skill or prompts-to-skill → tune-skill → prompts-to-skill-release → skill-to-mod (optional)
+- **Brew 2 · get-found:** Get a repo, skill or plugin found: findable → publish-pipeline → upstream-check → get-indexed (optional)
+- **Brew 3 · launch-safely:** Decide whether a site is safe to launch: web-preflight → pre-ship-security-red-team → pre-ship-performance-audit → release-gate-chair or release-gate-ledger or release-gate-validator
+- **Brew 4 · grow-search-traffic:** Grow organic search traffic: diagnose-search-visibility → seo-crawl → keyword-guard → wordsmith → pre-ship-performance-audit (optional) → platform-content (optional) → get-indexed (optional) → verify-search-visibility
+- **Brew 5 · land-a-job:** Land a job: recruiter-lens → applicant-kit → application-pilot → career-track (optional)
+- **Brew 6 · decision-memo:** Make a decision: research-brief → data-readout (optional) → crash-test or do-better → strategy-memo
+- **Brew 7 · learn-any-topic:** Learn any topic: topic-primer → study-system → course-builder (optional)
+- **Brew 8 · run-cold-outbound:** Run cold outbound: cold-email-list-gate → cold-email-ops → sales-copy
+- **Brew 9 · launch-a-product:** Launch a one-person product: solo-income-blueprint → site-prompt → production-code → paper-trail → release-gate-chair → platform-content
+- **Brew 10 · maintain-skills:** Maintain the skill family: tune-skill → prompts-to-skill-release (optional) → upstream-check
+- **Brew 11 · audit-agent-skills:** Stand up or audit a set of agent skills: skill-estate
+- **Brew 12 · set-up-a-coding-agent:** Set up a coding agent for a repo: portable-harness or harness-audit → setup-claude-advisor (optional) → diagnose-usage (optional) → choose-effort (optional)
 
 <!-- skills:end -->
 
