@@ -173,14 +173,14 @@ h3.sec{font-family:var(--serif);font-weight:400;font-size:28px;margin:44px 0 6px
 .url svg{width:12px;height:12px;color:var(--ink-3)}
 .visit{font-size:12px;font-weight:600;background:var(--cta);color:var(--cta-ink);border-radius:8px;padding:6px 11px;white-space:nowrap}
 .car-stage{position:relative;aspect-ratio:16/8.4;overflow:hidden;background:#070708}
-.live{position:absolute;inset:0;z-index:3;overflow:hidden;background:#09090b;opacity:0;pointer-events:none;transition:opacity .45s ease}
-.car.is-live .slide.has-live .live{opacity:1;pointer-events:auto}
-.live iframe{position:absolute;top:0;left:0;width:1280px;height:720px;border:0;background:#fff;transform-origin:0 0}
-.live .ld{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:#09090b;color:#d4d4d8;font-family:var(--mono);font-size:11.5px;transition:opacity .4s}
-.live .ld b{display:inline-flex;align-items:center;gap:8px;font-weight:400}
-.live .ld b i{width:8px;height:8px;border-radius:50%;background:#34d399;animation:ping 1.4s infinite}
-.live .ld small{color:#71717a;font-size:10.5px}
-.live.ready .ld{opacity:0;pointer-events:none}
+.livef{position:absolute;inset:0;z-index:3;overflow:hidden;background:#09090b;opacity:0;pointer-events:none;transition:opacity .45s ease}
+.car.is-live .slide.has-live .livef{opacity:1;pointer-events:auto}
+.livef iframe{position:absolute;top:0;left:0;width:1280px;height:720px;border:0;background:#fff;transform-origin:0 0}
+.livef .ld{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:#09090b;color:#d4d4d8;font-family:var(--mono);font-size:11.5px;transition:opacity .4s}
+.livef .ld b{display:inline-flex;align-items:center;gap:8px;font-weight:400}
+.livef .ld b i{width:8px;height:8px;border-radius:50%;background:#34d399;animation:ping 1.4s infinite}
+.livef .ld small{color:#71717a;font-size:10.5px}
+.livef.ready .ld{opacity:0;pointer-events:none}
 .mode{display:inline-flex;align-items:center;gap:7px;height:28px;padding:0 10px;border-radius:8px;border:1px solid var(--line);font-family:var(--mono);font-size:11px;color:var(--ink-2);white-space:nowrap}
 .mode:hover{color:var(--ink);border-color:var(--line-2)}
 .mode i{width:7px;height:7px;border-radius:50%;background:#38bdf8}
@@ -569,6 +569,10 @@ html.lay-side .navside{ transform:none; opacity:1; visibility:visible; transitio
 }
 
 /* ================= REPLICA variant: clean stage, centered pages ================= */
+html.v-replica .room-wrap{ cursor:default }
+html.v-replica .room-wrap.is-hot{ cursor:pointer }
+#hotOutline{ fill:rgba(56,189,248,.10); stroke:#38bdf8; stroke-width:1.4; stroke-linejoin:round; filter:drop-shadow(0 0 6px rgba(56,189,248,.7)); pointer-events:none; transition:opacity .2s }
+#hotOutline.amber{ fill:rgba(245,181,68,.12); stroke:#f5b544; filter:drop-shadow(0 0 6px rgba(245,181,68,.7)) }
 html.v-replica[data-skin="daylight"] .room-wrap{ background:#050505; border-radius:28px; box-shadow:0 30px 70px -25px rgba(0,0,0,.45) }
 html.v-replica .hero-frame{ border-color:transparent }
 html.v-replica .hero-frame .hh,html.v-replica .frame-tag{ display:none }
@@ -992,6 +996,7 @@ html.v-replica .stats{ display:none }
 (() => {
 'use strict';
 window.WORKSPACE_SRC = window.WORKSPACE_SRC || 'assets/workspace.jpg';
+window.WALL_POSTER_SRC = window.WALL_POSTER_SRC || 'assets/wall-poster.jpg';   // drop your own poster image here; falls back to the drawn print if missing
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -1328,9 +1333,21 @@ const callEl = $('#call'), stageEl = $('.stage');
 const C = { state:'idle', t0:0, timer:0, voice:true, caps:true, rec:null, typeT:0, utter:null };
 const synth = window.speechSynthesis || null;
 let VOICE = null;
+function voiceScore(v){
+  const n = v.name + ' ' + v.lang; let sc = 0;
+  if (!/^en/i.test(v.lang)) return -999;
+  if (/natural|neural/i.test(n)) sc += 60;            // Edge "Online (Natural)" voices
+  if (/premium|enhanced|siri/i.test(n)) sc += 45;     // macOS / iOS higher-quality voices
+  if (/google/i.test(n)) sc += 35;                    // Chrome's Google voices
+  if (/online/i.test(n)) sc += 15;
+  if (/en-IN/i.test(v.lang)) sc += 14; else if (/en-GB/i.test(v.lang)) sc += 8; else if (/en-US/i.test(v.lang)) sc += 6;
+  if (/prabhat|ravi|rishi|daniel|arthur|ryan|guy|andrew|brian|christopher|male/i.test(n)) sc += 6;
+  if (/compact|espeak|robot|novelty|zarvox|bad news|bells|whisper/i.test(n)) sc -= 80;
+  return sc;
+}
 function pickVoice(){
   if (!synth) return; const vs = synth.getVoices(); if (!vs.length) return;
-  VOICE = vs.find(v => /en-IN/i.test(v.lang)) || vs.find(v => /en-GB/i.test(v.lang) && /male|daniel|arthur/i.test(v.name)) || vs.find(v => /^en/i.test(v.lang)) || vs[0];
+  VOICE = vs.slice().sort((a, b) => voiceScore(b) - voiceScore(a))[0] || null;
 }
 if (synth){ pickVoice(); synth.onvoiceschanged = pickVoice; }
 const plain = h => h.replace(/<[^>]+>/g, '').replace(/&amp;/g,'&');
@@ -1360,10 +1377,19 @@ function say(html){
   caption('ArmBot', text); setStatus('SPEAKING'); setMode('speaking');
   const done = () => { if (C.state !== 'live') return; setMode(''); setStatus('YOUR TURN · ASK ANYTHING'); };
   if (synth && C.voice){
-    try { synth.cancel(); const u = new SpeechSynthesisUtterance(text); if (VOICE) u.voice = VOICE; u.rate = 1.02; u.pitch = .95;
-      u.onend = done; u.onerror = done; C.utter = u; synth.speak(u);
-      setTimeout(() => { if (!synth.speaking) done(); }, Math.max(2500, text.length * 70));   // in case the engine is silent
-      return; } catch(e){}
+    try {
+      synth.cancel(); if (!VOICE) pickVoice();
+      // short sentence-sized utterances sound more natural and avoid Chrome cutting long speech off
+      const parts = text.replace(/\s+/g, ' ').match(/[^.!?]+[.!?]*/g) || [text];
+      parts.forEach((t, i) => {
+        const u = new SpeechSynthesisUtterance(t.trim()); if (VOICE){ u.voice = VOICE; u.lang = VOICE.lang; }
+        u.rate = .97; u.pitch = 1; u.volume = 1;
+        if (i === parts.length - 1){ u.onend = done; u.onerror = done; }
+        synth.speak(u);
+      });
+      setTimeout(() => { if (!synth.speaking && !synth.pending) done(); }, Math.max(3000, text.length * 75));   // engine stayed silent
+      return;
+    } catch(e){}
   }
   setTimeout(done, Math.min(6000, 900 + text.length * 38));
 }
@@ -1411,14 +1437,15 @@ $('#callMic').addEventListener('click', () => {
   if (C.state !== 'live') return;
   const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
   const fallback = msg => { toast(msg); $('#callInput').focus(); setMode(''); setStatus('YOUR TURN · TYPE YOUR QUESTION'); $('#callMic').classList.remove('rec'); };
-  if (!SR) return fallback("Voice input isn't available in this browser. Type your question instead.");
+  if (window.NO_LIVE_FRAMES) return fallback("The mic is blocked in this preview. It works on the live site in Chrome or Edge, so type your question here for now.");
+  if (!SR) return fallback("This browser has no speech input. Use Chrome or Edge, or type your question.");
   try {
     try { synth && synth.cancel(); } catch(e){}
     const r = new SR(); C.rec = r; r.lang = 'en-IN'; r.interimResults = true; r.maxAlternatives = 1;
     $('#callMic').classList.add('rec'); setMode('listening'); setStatus('LISTENING…'); caption('You', '…', true);
     let final = '';
     r.onresult = ev => { const t = [...ev.results].map(x => x[0].transcript).join(' '); $('#callCapText').textContent = t; if (ev.results[ev.results.length-1].isFinal) final = t; };
-    r.onerror = () => fallback("Couldn't use the microphone here. Type your question instead.");
+    r.onerror = ev => fallback(ev && ev.error === 'not-allowed' ? "Microphone permission was blocked. Allow it in the address bar, or type your question." : "Couldn't hear that. Try again, or type your question.");
     r.onend = () => { $('#callMic').classList.remove('rec'); if (final) callAsk(final); else if (C.state === 'live' && callEl.classList.contains('listening')){ setMode(''); setStatus('YOUR TURN · ASK ANYTHING'); } };
     r.start();
   } catch(e){ fallback("Couldn't start voice input. Type your question instead."); }
@@ -1606,6 +1633,7 @@ function buildScene(){
     <text x="1.35" y=".72" text-anchor="middle" font-family="monospace" font-size=".11" fill="#d6d3d1" letter-spacing=".05">STEEL · VS · SHADOW</text>
     <rect x="0" y="3.2" width="2.7" height=".3" fill="#000" opacity=".55"/>
     <text x="1.35" y="3.39" text-anchor="middle" font-family="monospace" font-size=".09" fill="#a8a29e">AN ORIGINAL PRINT · STUDIO ARM</text>
+    ${window.WALL_POSTER_SRC ? `<g class="wall-poster"><rect x="0" y="0" width="2.7" height="3.5" fill="#f4efe4"/><image href="${window.WALL_POSTER_SRC}" x="0" y="0" width="2.7" height="3.5" preserveAspectRatio="xMidYMid slice" onerror="if(this.parentNode)this.parentNode.setAttribute('display','none')"/></g>` : ''}
   </g>`);
 
   /* floating shelf on right wall with books + trailing plant */
@@ -1818,6 +1846,7 @@ function photoScene(){
     <text x=".1" y="${TERM_TOP+.13}" font-family="JetBrains Mono,monospace" font-size=".085" fill="#475569">zsh — studio.arm-pz</text>
     <g id="termLines" font-family="JetBrains Mono,monospace" font-size=".118"></g>
   </g>
+  <polygon id="hotOutline" points="" />
   <g fill="none" stroke="#f5f5f4" stroke-width="1.4" stroke-linecap="round">
     ${[0,1,2].map(i => `<path d="M${dx-4+i*4} ${dy-2} q-4 -7 0 -13 q4 -6 0 -12" opacity="0">
       <animate attributeName="opacity" values="0;.5;0" dur="3.4s" begin="${-i*1.13}s" repeatCount="indefinite"/>
@@ -1936,19 +1965,29 @@ const ZOOM = 2.65, LOUPE = 210;
 let pan = { x:0, y:0 }, tilt = { x:0, y:0 }, drag = null, hot = null, loupeOn = false;
 function applyRoom(){ room.style.transform = `translate(${pan.x}px,${pan.y}px) perspective(1100px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`; }
 function toScene(cx, cy){ const m = sceneSvg.getScreenCTM(); if (!m) return null; const p = new DOMPoint(cx, cy).matrixTransform(m.inverse()); return [p.x, p.y]; }
+if (PHOTO){ loupeSvg.innerHTML = ''; loupe.remove(); }      // photo room: no magnifier, just hover hotspots
 function placeLoupe(cx, cy){
   const wr = wrap.getBoundingClientRect(); const p = toScene(cx, cy); if (!p) return;
-  const k = sceneSvg.getBoundingClientRect().width / 600; const span = LOUPE / (ZOOM * k);
-  loupeSvg.setAttribute('viewBox', `${(p[0]-span/2).toFixed(2)} ${(p[1]-span/2).toFixed(2)} ${span.toFixed(2)} ${span.toFixed(2)}`);
   const lx = cx - wr.left, ly = cy - wr.top;
-  loupe.style.left = lx + 'px'; loupe.style.top = ly + 'px';
   hot = hotAt(p);
-  md.style.display = hot === 'monitor' ? '' : 'none';
+  if (PHOTO){
+    const ol = $('#hotOutline');
+    if (ol){ ol.setAttribute('points', hot ? HOT[hot].map(q => q.map(n => n.toFixed(1)).join(',')).join(' ') : ''); ol.classList.toggle('amber', hot === 'kaapi'); }
+    wrap.classList.toggle('is-hot', !!hot);
+  } else {
+    const k = sceneSvg.getBoundingClientRect().width / 600; const span = LOUPE / (ZOOM * k);
+    loupeSvg.setAttribute('viewBox', `${(p[0]-span/2).toFixed(2)} ${(p[1]-span/2).toFixed(2)} ${span.toFixed(2)} ${span.toFixed(2)}`);
+    loupe.style.left = lx + 'px'; loupe.style.top = ly + 'px';
+    md.style.display = hot === 'monitor' ? '' : 'none';
+  }
   if (hot){ const L = LINKS[hot]; badge.querySelector('span').textContent = L.label; badge.classList.toggle('amber', L.amber); badge.classList.add('on');
-    badge.style.left = Math.min(Math.max(lx, 120), wr.width - 120) + 'px'; badge.style.top = Math.min(ly + LOUPE/2 + 10, wr.height - 34) + 'px'; }
+    badge.style.left = Math.min(Math.max(lx, 120), wr.width - 120) + 'px'; badge.style.top = Math.min(ly + (PHOTO ? 22 : LOUPE/2 + 10), wr.height - 34) + 'px'; }
   else badge.classList.remove('on');
 }
-function showLoupe(on){ loupeOn = on; loupe.classList.toggle('on', on); if (!on){ badge.classList.remove('on'); md.style.display = 'none'; hot = null; } }
+function showLoupe(on){
+  loupeOn = on; if (!PHOTO) loupe.classList.toggle('on', on);
+  if (!on){ badge.classList.remove('on'); md.style.display = 'none'; hot = null; wrap.classList.remove('is-hot'); const ol = $('#hotOutline'); if (ol) ol.setAttribute('points', ''); }
+}
 wrap.addEventListener('pointermove', e => {
   if (drag){
     const dx = e.clientX - drag.sx, dy = e.clientY - drag.sy;
@@ -2041,14 +2080,14 @@ const carousel = (() => {
   const FRAME_HOSTS = /^(arm-pz\.github\.io|skillsmith\.tech|www\.skillsmith\.tech)$/i;
   const canFrame = s => !window.NO_LIVE_FRAMES && (s.frame === 'any' || (s.frame === 'skillsmith' && FRAME_HOSTS.test(location.hostname)));
   let live = !window.NO_LIVE_FRAMES && store.get('arm-live') !== '0', mounted = false;
-  stage.innerHTML = SLIDES.map((s,i) => `<div class="slide${i?'':' on'}${canFrame(s)?' has-live':''}" style="background:${s.bg}" role="group" aria-roledescription="slide" aria-label="${i+1} of 4: ${esc(s.tab)}"><div class="s-in"><div class="s-txt">${s.txt}</div><div class="s-art">${s.art}</div></div>${canFrame(s) ? `<div class="live" data-live="${i}"><div class="ld"><b><i></i>Loading the live site from ${esc(s.host)}…</b><small>Visit ↗ opens it in a new tab</small></div></div>` : ''}</div>`).join('');
+  stage.innerHTML = SLIDES.map((s,i) => `<div class="slide${i?'':' on'}${canFrame(s)?' has-live':''}" style="background:${s.bg}" role="group" aria-roledescription="slide" aria-label="${i+1} of 4: ${esc(s.tab)}"><div class="s-in"><div class="s-txt">${s.txt}</div><div class="s-art">${s.art}</div></div>${canFrame(s) ? `<div class="livef" data-live="${i}"><div class="ld"><b><i></i>Loading the live site from ${esc(s.host)}…</b><small>Visit ↗ opens it in a new tab</small></div></div>` : ''}</div>`).join('');
   function fit(){
     const w = stage.clientWidth || 900, h = stage.clientHeight || 470, k = w / 1280;
-    $$('.live iframe', stage).forEach(f => { f.style.height = Math.ceil(h / k) + 'px'; f.style.transform = `scale(${k})`; });
+    $$('.livef iframe', stage).forEach(f => { f.style.height = Math.ceil(h / k) + 'px'; f.style.transform = `scale(${k})`; });
   }
   function mount(){
     if (mounted || !live) return; mounted = true;
-    $$('.live', stage).forEach(el => {
+    $$('.livef', stage).forEach(el => {
       const s = SLIDES[+el.dataset.live]; const f = document.createElement('iframe');
       f.src = s.url; f.title = `${s.tab} live website`; f.referrerPolicy = 'no-referrer-when-downgrade';
       f.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-popups allow-forms');
