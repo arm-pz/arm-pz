@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Abdul Rahman P Z — Applied AI &amp; Cloud Engineer</title>
-<meta name="description" content="Abdul Rahman P Z — Applied AI & Cloud Engineer. AI coaching, applied AI integration, C# MCP servers, agent skills, AWS." />
-<meta property="og:title" content="Abdul Rahman P Z — Applied AI & Cloud Engineer" />
-<meta property="og:description" content="10 years of C#/.NET & AWS delivery, now building AI coding agent skills, C# MCP servers and repeatable AI workflows." />
+<title>Abdul Rahman P Z — Merge gates for agent-written code</title>
+<meta name="description" content="Abdul Rahman P Z builds merge gates, review loops and evals for Claude Code and Codex, so agent-written code only lands when it can prove itself. Ten years of C#/.NET and AWS." />
+<meta property="og:title" content="Abdul Rahman P Z — Merge gates for agent-written code" />
+<meta property="og:description" content="pr-graph: a merge gate that holds pull requests it can't verify. Review loops and evals for Claude Code and Codex, on ten years of C#/.NET and AWS." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -569,6 +569,30 @@ html.lay-side .navside{ transform:none; opacity:1; visibility:visible; transitio
   .ask-ai{ bottom:80px; right:12px } .audio-btn{ right:66px }
 }
 
+/* --- evidence strip + pr-graph case study --- */
+a.inl{ color:var(--ink); text-decoration:underline; text-decoration-color:var(--line-2); text-underline-offset:3px }
+a.inl:hover{ text-decoration-color:var(--cyan) }
+.evi{ display:grid; gap:0; border:1px solid var(--line); border-radius:12px; overflow:hidden; background:var(--surface) }
+.evi a{ display:grid; grid-template-columns:auto 1fr auto; gap:4px 10px; align-items:start; padding:11px 12px; border-top:1px solid var(--line); transition:background-color .2s }
+.evi a:first-child{ border-top:0 }
+.evi a:hover{ background:var(--surface-2) }
+.evi .n{ font-family:var(--mono); font-size:12px; font-weight:500; color:var(--ink); white-space:nowrap }
+.evi .m{ font-family:var(--mono); font-size:10px; color:#22c55e; border:1px solid color-mix(in srgb,#22c55e 35%,transparent); border-radius:999px; padding:1px 7px; white-space:nowrap; justify-self:end }
+.evi .d{ grid-column:1 / -1; font-size:12px; line-height:1.5; color:var(--ink-2) }
+.case{ margin:0 0 26px; padding:24px; border-radius:16px; border:1px solid var(--line-2); background:linear-gradient(160deg,color-mix(in srgb,var(--cyan) 7%,var(--surface)),var(--surface) 55%) }
+.case .k{ font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-3) }
+.case h3{ font-family:var(--serif); font-weight:400; font-size:clamp(26px,3vw,34px); line-height:1.08; margin:8px 0 10px }
+.case > p{ color:var(--ink-2); font-size:14.5px; line-height:1.65; max-width:64ch; margin:0 0 16px }
+.case .grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:10px }
+.case .grid div{ padding:14px; border-radius:12px; border:1px solid var(--line); background:var(--bg) }
+.case .grid b{ display:block; font-size:13.5px; margin-bottom:4px }
+.case .grid span{ font-size:12.5px; line-height:1.55; color:var(--ink-2) }
+.case .grid .big{ font-family:var(--serif); font-size:40px; line-height:1; display:block; margin-bottom:4px; color:var(--ink) }
+.case .row{ display:flex; flex-wrap:wrap; gap:8px; margin-top:16px }
+@media (max-width:640px){ .case .grid{ grid-template-columns:1fr } }
+/* coaching (demoted) */
+.coach{ padding:18px 20px; border-radius:14px; border:1px dashed var(--line-2); color:var(--ink-2); font-size:14px; line-height:1.65 }
+
 /* ================= REPLICA variant: clean stage, centered pages ================= */
 html.v-replica .room-wrap{ cursor:default }
 html.v-replica .room-wrap.is-hot{ cursor:pointer }
@@ -662,6 +686,7 @@ html.v-replica .stats{ display:none }
   <symbol id="ic-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></symbol>
   <symbol id="ic-blocks" viewBox="0 0 24 24"><path d="M4 4h6v6H4zM14 4l6 3v6l-6-3zM4 14h6v6H4zM14 14h6v6h-6z"/></symbol>
   <symbol id="ic-db" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></symbol>
+  <symbol id="ic-check" viewBox="0 0 24 24"><path d="M12 22s8-3.5 8-10V5l-8-3-8 3v7c0 6.5 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></symbol>
   <symbol id="ic-home" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></symbol>
   <symbol id="ic-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
   <symbol id="ic-brief" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18"/></symbol>
@@ -716,9 +741,9 @@ html.v-replica .stats{ display:none }
       <i class="hh tl"></i><i class="hh tr"></i><i class="hh bl"></i><i class="hh br"></i>
       <span class="frame-tag mono">arm-pz · 380 × auto</span>
       <div class="kicker">Abdul Rahman P Z</div>
-      <h1 class="hero">Applied AI <em>&amp;</em> Cloud Engineer</h1>
-      <p class="lede">Hey, I'm <span class="sig">Abdul Rahman.</span> Software engineer with 10 years of enterprise delivery in C#/.NET and AWS, now working hands-on building AI coding agent skills, C# MCP servers, and repeatable AI workflows. <b class="avail"><i></i>Immediate joiner</b></p>
-      <p class="pos">AI Coach <span>·</span> Applied AI Integration <span>·</span> Mentoring and Enablement</p>
+      <h1 class="hero">I build merge gates for <em>agent-written code.</em></h1>
+      <p class="lede">Hey, I'm <span class="sig">Abdul Rahman.</span> I build review loops and evaluation for Claude Code and Codex, so agent code only lands when it can prove itself. My gate, <a class="inl" href="https://github.com/arm-pz/pr-graph" target="_blank" rel="noopener">pr-graph</a>, holds every pull request it can't verify.</p>
+      <p class="pos">Built on ten years shipping C#/.NET and AWS in production.</p>
     </div>
 
     <div class="actions rv" style="--d:1">
@@ -729,6 +754,11 @@ html.v-replica .stats{ display:none }
       <button class="btn-ic" data-open="resumeModal"><svg class="i" style="width:14px;height:14px"><use href="#ic-doc"/></svg>Résumé <svg class="i" style="width:12px;height:12px"><use href="#ic-ext"/></svg></button>
       <button class="btn-glyph sq" id="railToggle" aria-label="Open navigation sidebar" data-tip="Open sidebar · Ctrl+B"><svg class="i"><use href="#ic-panel"/></svg></button>
     </div>
+
+    <section class="rsec rv" style="--d:2">
+      <div class="sec-h"><span class="sh"><svg class="i"><use href="#ic-check"/></svg>Evidence</span><a class="lnk" href="https://github.com/arm-pz" target="_blank" rel="noopener">source <svg class="i"><use href="#ic-ext"/></svg></a></div>
+      <div class="evi" id="evidence"></div>
+    </section>
 
     <section class="rsec rv" style="--d:2">
       <div class="sec-h"><span class="sh"><svg class="i"><use href="#ic-code"/></svg>Core Stack</span><button class="lnk" data-nav="stack">All skills <svg class="i"><use href="#ic-ext"/></svg></button></div>
@@ -835,7 +865,7 @@ html.v-replica .stats{ display:none }
     <header class="page-head">
       <span class="eyebrow">01 / About</span>
       <h2>About <em>me.</em></h2>
-      <p>Enterprise engineer turned AI coach. The background, the way I work, and the desk it happens at.</p>
+      <p>I build the checks that decide when agent-written code is allowed to land. The background, the way I work, and the desk it happens at.</p>
     </header>
     <div class="profile">
       <div class="pf-side">
@@ -843,11 +873,11 @@ html.v-replica .stats{ display:none }
         <div class="pf-tools" id="pfTools"></div>
       </div>
       <div class="pf-main">
-        <div class="pf-meta"><span class="ok-pill"><i></i>Available · immediate joiner</span><span class="pf-loc"><svg class="i"><use href="#ic-pin"/></svg>Coimbatore, India</span></div>
+        <div class="pf-meta"><span class="ok-pill"><i></i>Open to work · remote</span><span class="pf-loc"><svg class="i"><use href="#ic-pin"/></svg>Coimbatore, India</span></div>
         <h3>Hi, I'm Abdul Rahman P Z</h3>
         <p>I spent ten years delivering enterprise systems in <b>C#/.NET and AWS</b> at Cognizant, Infosys and Accenture. On Accenture's Comcast programme I won a Client Champion Award and mentored junior developers through weekly code reviews.</p>
-        <p>Since late 2024 at Crezantium I've built C# MCP servers for trade workflows, AWS-backed logistics and pricing services, and AI-driven SEO. Most of my time now goes into <b>agent skills</b>, like SkillSmith and deep-tutor, and into helping teams adopt Claude Code, Codex and Cursor as everyday habits.</p>
-        <p>I'm open to AI enablement, applied AI integration and cloud engineering roles. Remote, and I can join immediately.</p>
+        <p>Since late 2024 at Crezantium I've built C# MCP servers with explicit read/write contracts, so agents only touch approved business data. That work led straight into the question I care about now: <b>when can you trust code an agent wrote?</b></p>
+        <p>My answer is <a class="inl" href="https://github.com/arm-pz/pr-graph" target="_blank" rel="noopener">pr-graph</a>, a review and merge-gate loop for Claude Code and Codex, plus the evals and review skills around it. I'm open to agent infrastructure, evaluation and applied-AI engineering roles, remote, and I can join immediately.</p>
         <div class="pf-btns">
           <button class="btn-pill solid" data-nav="projects"><svg class="i"><use href="#ic-layers"/></svg>View Projects</button>
           <button class="btn-pill" data-nav="experience"><svg class="i"><use href="#ic-brief"/></svg>Experience</button>
@@ -856,10 +886,10 @@ html.v-replica .stats{ display:none }
       </div>
     </div>
     <div class="facts">
-      <div><span>Focus</span><b>Applied AI &amp; Cloud</b></div>
+      <div><span>Focus</span><b>Agent infra &amp; evaluation</b></div>
       <div><span>Degree</span><b>Int. M.Sc. Software Eng</b></div>
       <div><span>Base</span><b>Coimbatore · Remote</b></div>
-      <div><span>Open to</span><b>AI enablement roles</b></div>
+      <div><span>Open to</span><b>Agent infra &amp; eval roles</b></div>
     </div>
     <div class="stats">
       <div><b data-count="10">10</b><span>years of enterprise delivery</span></div>
@@ -867,10 +897,12 @@ html.v-replica .stats{ display:none }
       <div><b data-count="12">12</b><span>chained AI workflows</span></div>
       <div><b>Top 5%</b><span>Client Champion, Accenture</span></div>
     </div>
-    <div class="sec-row"><div><h3 class="sec">Applied AI &amp; open source</h3><p class="sec-sub">What I build and maintain outside client work.</p></div></div>
+    <div class="sec-row"><div><h3 class="sec">Agent infrastructure &amp; evaluation</h3><p class="sec-sub">What I build and maintain, with the evidence in each repo.</p></div></div>
     <div class="tl" id="aiWork"></div>
     <div class="sec-row"><div><h3 class="sec">Workspace &amp; Gear</h3><p class="sec-sub">The desk in the studio is my real one. These are the daily drivers on it.</p></div><span class="muted mono" style="font-size:11px">Daily drivers</span></div>
     <div class="gear" id="gear"></div>
+    <div class="sec-row"><div><h3 class="sec">Coaching &amp; enablement</h3></div></div>
+    <p class="coach">I also coach teams on making Claude Code, Codex and Cursor part of everyday work: packaged skills instead of ad-hoc prompts, review loops instead of blind trust. At Accenture I mentored junior developers through weekly code reviews.</p>
     <div class="sec-row"><div><h3 class="sec">Education</h3></div></div>
     <div class="tl"><div class="row"><div class="when">2010 – 2015</div><div><h4>Integrated M.Sc. in Software Engineering</h4><div class="org">Sri Krishna College of Engineering and Technology, Coimbatore</div></div></div></div>
   </div>
@@ -910,9 +942,28 @@ html.v-replica .stats{ display:none }
     <header class="page-head">
       <span class="eyebrow">04 / Projects</span>
       <h2>Things I've <em>shipped.</em></h2>
-      <p>Four live builds across the Caffeinity umbrella and SkillSmith. Hover the preview to pause.</p>
+      <p>The merge gate first, the evidence behind it, then the live builds across Caffeinity and SkillSmith.</p>
     </header>
 
+    <article class="case">
+      <span class="k">Featured · Agent infrastructure</span>
+      <h3>pr-graph: a merge gate that knows which PRs it isn't allowed to finish.</h3>
+      <p>Agents review a pull request, fix its blocking findings on the PR's own branch, and a fresh reviewer checks each fix. Then a Python gate, not the model, decides whether it merges. If it can't verify a PR, it holds it and says why.</p>
+      <div class="grid">
+        <div><span class="big">34</span><b>known-bad states it must refuse</b><span>Run in CI on every PR, starting from a real incident: PR #74's HIGH finding, unmasked input posted to GitHub.</span></div>
+        <div><b>Holds on C1 / H1</b><span>Any open CRITICAL or HIGH finding blocks the merge, as do <code>hold</code>, <code>hands-off</code> and <code>needs-owner</code> labels and any change to CI, agent or gate config, which always go to a human.</span></div>
+        <div><b>Pinned to the reviewed commit</b><span>A review only counts for the exact head and base SHA it saw. The merge pins the reviewed head, so a push after review makes GitHub refuse it. The gate itself runs from a pinned commit.</span></div>
+      </div>
+      <div class="grid" style="margin-top:10px">
+        <div><b>Typed handoffs</b><span>Reviewer and fixer agents exchange JSON reports checked against schemas, with no shared chat history to drift.</span></div>
+        <div><b>Scorecard per run</b><span>Every run ends with what merged, what's held and what needs an owner, with one line of reasons each.</span></div>
+        <div><b>Claude Code and Codex</b><span>Bundled launchers for both. Other agents can plug in through the same adapter contract.</span></div>
+      </div>
+      <div class="row"><a class="btn-pill solid" href="https://github.com/arm-pz/pr-graph" target="_blank" rel="noopener">View pr-graph <svg class="i"><use href="#ic-ext"/></svg></a><a class="btn-pill" href="https://github.com/arm-pz/pr-graph/blob/main/tools/pr-graph/merge_gate.py" target="_blank" rel="noopener">Read the gate</a></div>
+    </article>
+    <div class="sec-row" style="margin-top:0"><div><h3 class="sec">Evidence</h3><p class="sec-sub">Each tool says what it checks or measures. Follow the links for the code and tests.</p></div></div>
+    <div class="evi" id="evidenceP" style="margin-bottom:34px"></div>
+    <div class="sec-row" style="margin-top:0"><div><h3 class="sec">Live builds</h3></div></div>
     <div class="car" id="car" aria-roledescription="carousel">
       <div class="car-bar">
         <div class="lights" aria-hidden="true"><i></i><i></i><i></i></div>
@@ -974,7 +1025,7 @@ html.v-replica .stats{ display:none }
     <button class="x" data-close aria-label="Close"><svg class="i"><use href="#ic-close"/></svg></button>
     <span class="eyebrow">Let's talk</span>
     <h2 id="contactTitle" class="serif" style="font-size:34px;margin:8px 0 6px">Say hello.</h2>
-    <p class="soft" style="font-size:13.5px;line-height:1.6;margin:0 0 10px">DMs are open for applied-AI roles, AI enablement and coaching, and C#/.NET + AWS work. Remote, immediate joiner.</p>
+    <p class="soft" style="font-size:13.5px;line-height:1.6;margin:0 0 10px">DMs are open for agent infrastructure, evaluation and applied-AI roles, and C#/.NET + AWS work. Remote, immediate joiner.</p>
     <div id="contactRows"></div>
   </div>
 </div>
@@ -1010,7 +1061,21 @@ const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 /* ======================= DATA ======================= */
 const CORE = ['C# / .NET 9','AWS','MCP Servers','Claude Code','Codex','Cursor','Ollama','ASP.NET Core','Terraform','SQL Server'];
 
+// Evidence: what each tool checks or measures. Every line is taken from the repo's own README, code or tests.
+const EVIDENCE = [
+  { name:'pr-graph', url:'https://github.com/arm-pz/pr-graph', metric:'34 known-bad states',
+    text:'A merge gate run as code, not by the model. It refuses 34 known-bad PR states in CI, from an open HIGH finding to a stale review or a touched workflow file.' },
+  { name:'skill-eval-suite', url:'https://github.com/arm-pz/skill-eval-suite', metric:'60 checks passing',
+    text:'Evals for agent skills and scheduled loops: pass rates over 3+ trials, flips against a baseline, token budgets as gates, a hidden holdout, and a known-bad set every judge must fail.' },
+  { name:'consistent-code-review', url:'https://github.com/arm-pz/consistent-code-review', metric:'same answer twice',
+    text:'A review skill that gives the same answer twice: a fixed checklist order, file + line + code for every finding, and re-runs reconciled by a SHA-256 input ID.' },
+  { name:'address-findings', url:'https://github.com/arm-pz/address-findings', metric:'never merges',
+    text:'The fixer: CRITICAL and HIGH findings only, inside the PR\'s own files, one commit per finding, each reported fixed, won\'t fix or escalate.' }
+];
+
 const PROJECTS = [
+  { name:'pr-graph', url:'https://github.com/arm-pz/pr-graph', host:'github.com/arm-pz/pr-graph', tag:'GATE', stack:['Claude Code','Codex'],
+    blurb:'A merge gate that knows which PRs it isn\'t allowed to finish. It holds any PR with an open CRITICAL or HIGH finding, a review of a stale head or base, a hold label or a protected-path change, and merges only the exact SHA that was reviewed.' },
   { name:'Shu Atlas', cjk:'五輸', url:'https://acu.caffeinity.com', host:'acu.caffeinity.com', tag:'WEB', stack:[],
     blurb:'Interactive Wu Xing (Five Elements) cycle, 12-channel metro map covering 65 points, anatomical overlay charts, a 10-module learning course and a 60-point study recall quiz.' },
   { name:'Kaapi by Caffeinity', url:'https://kaapi.caffeinity.com', host:'kaapi.caffeinity.com', tag:'APP', stack:[],
@@ -1022,11 +1087,18 @@ const PROJECTS = [
 ];
 
 const AI_WORK = [
+  { when:'Agent infra', title:'pr-graph', org:'github.com/arm-pz/pr-graph', tags:['Claude Code','Codex'],
+    pts:['Review → fix → re-review → merge-gate loop for Claude Code and Codex. A fresh reviewer each round, typed JSON reports between agents, and a Python gate that decides the merge.',
+         'Holds PRs with open CRITICAL or HIGH findings, stale reviews, hold labels or protected-path changes, and pins the merge to the reviewed SHA. 34 known-bad states run in CI on every PR.'] },
+  { when:'Evaluation', title:'skill-eval-suite', org:'github.com/arm-pz/skill-eval-suite', tags:['Claude Code'],
+    pts:['Evals for agent skills and loops: real prompts graded on trajectory, pass rates over 3+ trials, a hidden holdout, token budgets as gates, and a known-bad set every judge must fail first.'] },
+  { when:'Evaluation', title:'consistent-code-review + address-findings', org:'github.com/arm-pz', tags:['Claude Code','Codex','Cursor'],
+    pts:['A reviewer that gives the same answer twice (fixed checklist, file + line + code per finding, SHA-256 input ID), and a fixer that touches only CRITICAL and HIGH findings inside the PR and never merges.'] },
   { when:'Open source', title:'deep-tutor', org:'github.com/arm-pz/deep-tutor', tags:['Claude Code','Codex','Cursor'],
     pts:['Open-source teaching skill that turns any topic into structured 8-mode instruction: step-by-step foundations, staged curricula, readiness checks, plain-language explanations and graded quizzes.'] },
   { when:'Open source', title:'SkillSmith.tech', org:'github.com/arm-pz', tags:['Claude Code','Codex','Cursor'],
     pts:['Public library of 80+ tested skills and 12 chained workflows for Claude Code, Codex and Cursor.'] },
-  { when:'Practice', title:'Agent quality & evaluation', org:'Skill library tooling', tags:['Claude Code'],
+  { when:'Practice', title:'Skill-library quality checks', org:'Skill library tooling', tags:['Claude Code'],
     pts:['Preflight checks for tool-contract consistency, failure cases, instruction quality, publication readiness and full-library validation.'] },
   { when:'Practice', title:'Prompt engineering & local models', org:'Local LLM workflows', tags:['Ollama'],
     pts:['Designing agent instructions and local LLM workflows using Ollama.'] },
@@ -1035,8 +1107,8 @@ const AI_WORK = [
 ];
 
 const EXP = [
-  { when:'Oct 2024 – Present', title:'Cloud & AI Solutions and Commercial Operations', org:'Crezantium · Fujairah, UAE (Remote)', tags:['C# / .NET 9','AWS','MCP Servers'],
-    pts:['Built C# MCP servers for trade workflows and a procurement / sales lead tracker.','Ran AI-driven SEO and AWS-backed C#/.NET logistics and dynamic-pricing services.','Represented Crezantium at Gulfood, IndusFood and IPC.'] },
+  { when:'Oct 2024 – Present', title:'Cloud & AI Solutions (agent tooling, MCP)', org:'Crezantium · Fujairah, UAE (Remote)', tags:['C# / .NET 9','AWS','MCP Servers'],
+    pts:['Built C# MCP servers with explicit read/write contracts, so AI agents work only with approved trade data: trade workflows and a procurement / sales lead tracker.','Also ran AWS-backed C#/.NET logistics and dynamic-pricing services and AI-driven SEO.'] },
   { when:'Jun 2021 – Sep 2024', title:'Senior Developer, Comcast Programme', org:'Accenture', tags:['C# / .NET 9','AWS','ASP.NET Core'],
     pts:['Client Champion Award (2022–2023, top 5%).','Mentored junior developers through weekly code reviews.','AWS Lambda / SQS / SNS / Glue / S3 / DynamoDB microservices, ASP.NET Core REST APIs and automated CI/CD.'] },
   { when:'Jun 2020 – Jun 2021', title:'Technology Analyst', org:'Infosys · Chennai', tags:['C# / .NET 9'],
@@ -1072,8 +1144,8 @@ const NOTES = [
     text:'Teams stall when AI stays a bag of ad-hoc prompts. Packaging workflows into tested SKILL.md specs with preflight validators turns experimentation into reliable daily habits.' },
   { title:'C# MCP servers for approved business data', tag:'Applied AI', date:'Oct 2026',
     text:'Connecting LLM agents to real enterprise data works best behind strongly-typed C#/.NET MCP boundaries that enforce read/write contracts and keep commercial workflows auditable.' },
-  { title:'Zero shared chat history in multi-agent loops', tag:'Agent Evaluation', date:'Oct 2026',
-    text:'In arm-pz/pr-graph, passing typed JSON reports between reviewer and fixer agents eliminates conversational drift and makes every merge gate deterministic.' }
+  { title:'Gate with code, not with the model', tag:'Agent Evaluation', date:'Nov 2026',
+    text:'A model can say "looks good" about a commit that changed after it looked. A merge decision belongs in code that checks the exact SHA, the CI results and the labels, and refuses anything it cannot verify.' }
 ];
 
 // Public contact — LinkedIn, X and GitHub only. No phone, no personal email.
@@ -1098,7 +1170,12 @@ function hideTip(){ tipEl.style.opacity = 0; }
 /* ======================= RENDER: RAIL ======================= */
 const PILL_IC = { 'C# / .NET 9':'ic-hash', 'AWS':'ic-cloud', 'MCP Servers':'ic-plug', 'Claude Code':'ic-spark', 'Codex':'ic-term', 'Cursor':'ic-cursor', 'Ollama':'ic-cpu', 'ASP.NET Core':'ic-globe', 'Terraform':'ic-blocks', 'SQL Server':'ic-db' };
 const pillHTML = s => `<button class="pill" data-filter="${esc(s)}"><svg class="i"><use href="#${PILL_IC[s]||'ic-code'}"/></svg>${esc(s)}</button>`;
+function renderEvidence(){
+  const html = EVIDENCE.map(e => `<a href="${e.url}" target="_blank" rel="noopener"><span class="n">${esc(e.name)}</span><span></span><span class="m">${esc(e.metric)}</span><span class="d">${esc(e.text)}</span></a>`).join('');
+  $('#evidence').innerHTML = html; $('#evidenceP').innerHTML = html;
+}
 function renderRail(){
+  renderEvidence();
   $('#corePills').innerHTML = CORE.map(pillHTML).join('');
   $('#stackCore').innerHTML = CORE.map(pillHTML).join('');
   $('#featured').innerHTML = PROJECTS.map(p => `
@@ -1173,7 +1250,7 @@ function renderPages(){
       <a class="btn-ic" href="${c.url}" target="_blank" rel="noopener">Open ↗</a></div>`).join('');
   $('#resumeBody').innerHTML = `
     <div class="rh"><h2 id="resumeTitle">Abdul Rahman P Z</h2><span>Coimbatore, India · Remote · Immediate joiner</span></div>
-    <div style="color:var(--ink);font-weight:600;margin-top:4px">Applied AI &amp; Cloud Engineer — AI Coach | Applied AI Integration | Mentoring and Enablement</div>
+    <div style="color:var(--ink);font-weight:600;margin-top:4px">Agent infrastructure &amp; evaluation — merge gates, review loops and evals for Claude Code and Codex</div>
     <div class="mono" style="font-size:11px;margin-top:6px">linkedin.com/in/itsarm · x.com/abdulrahmanpz · github.com/arm-pz</div>
     <p style="margin:12px 0 0">Software engineer with 10 years of enterprise delivery in C#/.NET and AWS, now working hands-on building AI coding agent skills, C# MCP servers, and repeatable AI workflows.</p>
     <h3>Applied AI &amp; open-source work</h3>
@@ -1232,7 +1309,7 @@ function setView(name, { push = true } = {}){
     window.scrollTo(0, 0);
     if (name === 'projects') carousel.resume(); else carousel.suspend();
     if (name === 'about') countUp();
-    document.title = name === 'home' ? 'Abdul Rahman P Z — Applied AI & Cloud Engineer' : `${name[0].toUpperCase()+name.slice(1)} · Abdul Rahman P Z`;
+    document.title = name === 'home' ? 'Abdul Rahman P Z — Merge gates for agent-written code' : `${name[0].toUpperCase()+name.slice(1)} · Abdul Rahman P Z`;
   };
   if (reduceMotion) swap(); else { from.classList.add('leaving'); setTimeout(swap, 170); }
   if (push && location.hash !== '#' + name) history.pushState(null, '', name === 'home' ? location.pathname + location.search : '#' + name);
@@ -1459,7 +1536,7 @@ function callAsk(q){
 }
 $('#callOpen').addEventListener('click', startCall);
 $('#callEnd').addEventListener('click', endCall);
-$('#callSug').innerHTML = ['What does he do?','MCP servers','SkillSmith','Experience','How to reach him?'].map(t => `<button type="button">${t}</button>`).join('');
+$('#callSug').innerHTML = ['What does he do?','pr-graph','MCP servers','Experience','How to reach him?'].map(t => `<button type="button">${t}</button>`).join('');
 $('#callSug').addEventListener('click', e => { const b = e.target.closest('button'); if (b) callAsk(b.textContent); });
 $('#callAsk').addEventListener('submit', e => { e.preventDefault(); const i = $('#callInput'); callAsk(i.value); i.value = ''; });
 $('#callCC').addEventListener('click', () => { C.caps = !C.caps; $('#callCC').classList.toggle('on', C.caps); $('#callCC').setAttribute('aria-pressed', C.caps); $('#callCap').classList.toggle('off', !C.caps); });
@@ -1527,6 +1604,7 @@ function countUp(){
 
 /* ======================= ARMBOT ======================= */
 const BOT = [
+  { id:'prgraph', k:['pr-graph','pr graph','prgraph','merge gate','gate','evaluation','eval','review loop','verify'], a:"pr-graph is his merge gate for agent-written code. Agents review a PR, fix its blocking findings, and a fresh reviewer checks each fix. Then a Python gate decides: it holds any PR with an open CRITICAL or HIGH finding, a stale review, a hold label or a protected-path change, and merges only the exact commit that was reviewed. <a href='https://github.com/arm-pz/pr-graph' target='_blank' rel='noopener'>github.com/arm-pz/pr-graph</a>" },
   { id:'experience', k:['experience','years','career','background','work'], a:"10 years of enterprise delivery: Cognizant (2016–2020), Infosys (2020–2021), Accenture on the Comcast programme (2021–2024), and Crezantium since Oct 2024, remote from Coimbatore." },
   { id:'mcp', k:['mcp','model context'], a:"He builds MCP servers in C# so AI agents can work safely with approved business data. At Crezantium that covered trade workflows and a procurement / sales lead tracker." },
   { id:'skillsmith', k:['skillsmith','skills','skill'], a:"SkillSmith is a free, open-source library of 80+ plain-markdown SKILL.md agent skills, 12 chained workflows and 7 local Claude Code mods. See <a href='https://skillsmith.tech' target='_blank' rel='noopener'>skillsmith.tech</a>." },
@@ -1541,16 +1619,17 @@ const BOT = [
   { id:'ollama', k:['ollama','local','prompt'], a:"He designs agent instructions and local LLM workflows with Ollama, plus preflight checks for tool contracts, failure cases and instruction quality." },
   { id:'location', k:['location','where','based','remote','relocat'], a:"Based in Coimbatore, India. Works remote and can join immediately." }
 ];
-const SUGG = ['What does he do?','MCP servers','SkillSmith','Experience','How to contact?'];
+const SUGG = ['What does he do?','pr-graph','MCP servers','Experience','How to contact?'];
 const chat = $('#chat'), log = $('#chatLog');
 function addMsg(html, who){ const d = document.createElement('div'); d.className = 'msg ' + who; d.innerHTML = html; log.appendChild(d); log.scrollTop = log.scrollHeight; return d; }
 /* Lines spoken in Abdul's cloned voice. Each one plays assets/voice/<id>.mp3 when that clip
    exists, and falls back to the browser's speech voice when it doesn't. Keep VOICE-SCRIPT.md in sync. */
 const VOICE_LINES = {
-  greeting:   "Hey, this is Abdul Rahman. Well, an AI version of my voice. Ask me about my ten years in dot NET and AWS, the C sharp MCP servers I build, SkillSmith, or how to reach me.",
-  about:      "I'm an Applied AI and Cloud Engineer. I coach teams on using AI coding tools well, I integrate AI into real business systems, and I bring ten years of C sharp, dot NET and AWS experience to it.",
+  greeting:   "Hey, this is Abdul Rahman. Well, an AI version of my voice. Ask me about pr-graph, the merge gate I built for agent-written code, my evals and review tools, or how to reach me.",
+  about:      "I build merge gates, review loops and evals for code written by agents in Claude Code and Codex, so it only lands when it can prove itself. Underneath that are ten years shipping C sharp, dot NET and AWS in production.",
+  prgraph:    "pr-graph is my merge gate. Agents review a pull request, fix the blocking findings, and a fresh reviewer checks every fix. Then a Python gate decides. It holds any PR with an open critical or high finding, a stale review, a hold label, or a change to protected files, and it only merges the exact commit that was reviewed. Its tests include thirty-four known-bad states it must refuse.",
   experience: "I've spent ten years in enterprise delivery. Cognizant from 2016, then Infosys, then Accenture on the Comcast programme. Since late 2024 I've been at Crezantium, working remotely from Coimbatore.",
-  mcp:        "I build MCP servers in C sharp, so AI agents can work safely with approved business data. At Crezantium that covered trade workflows and a procurement and sales lead tracker.",
+  mcp:        "I build MCP servers in C sharp with explicit read and write contracts, so AI agents only touch approved business data. At Crezantium that covered trade workflows and a procurement and sales lead tracker.",
   skillsmith: "SkillSmith is my free, open-source library of more than eighty agent skills, written as plain markdown, plus twelve chained workflows and seven Claude Code mods. You'll find it at skillsmith dot tech.",
   deeptutor:  "deep-tutor is an open-source teaching skill I wrote. It turns any topic into structured lessons across eight modes, from foundations and staged curricula to readiness checks and graded quizzes.",
   aws:        "On AWS I work with Lambda, SQS, SNS, S3, DynamoDB, Cognito and Glue, with Terraform and CloudFormation for infrastructure. At Accenture I built AWS microservices and ASP dot NET Core APIs with automated CI CD.",
@@ -1578,7 +1657,7 @@ function botMatch(q){
 }
 function botReply(q){
   const l = q.toLowerCase();
-  if (/what does|who is|about|summary|role/.test(l)) return "Abdul Rahman is an Applied AI & Cloud Engineer: an AI coach focused on applied AI integration, mentoring and enablement, with 10 years of C#/.NET and AWS behind it.";
+  if (/what does|who is|about|summary|role/.test(l)) return "Abdul Rahman builds merge gates, review loops and evals for agent-written code in Claude Code and Codex. His gate, pr-graph, holds every pull request it can't verify. It's built on 10 years of C#/.NET and AWS behind it.";
   const hit = BOT.find(b => b.k.some(k => l.includes(k)));
   return hit ? hit.a : "I only know what's on this site. Try asking about experience, MCP servers, SkillSmith, AWS, coaching, or how to get in touch.";
 }
@@ -1999,7 +2078,7 @@ const CMDS = {
   'gh pr-graph run --deterministic': ['✓ reviewer → fixer · typed JSON reports', '  merge gate: green'],
   'dotnet run --project CSharp.Mcp': ['info: MCP server listening on stdio', '      approved-data tools registered'],
   'open https://skillsmith.tech': ['→ opening skillsmith.tech (click the monitor)'],
-  whoami: ['Abdul Rahman P Z · Applied AI & Cloud Engineer'],
+  whoami: ['Abdul Rahman P Z · merge gates for agent-written code'],
   kaapi: ['☕ filter kaapi brewing… kaapi.caffeinity.com'],
   skillsmith: ['80+ skills · 12 workflows · 7 mods → skillsmith.tech'],
   stack: ['C# · .NET 9 · AWS · MCP · Claude Code · Codex · Cursor · Ollama'],
