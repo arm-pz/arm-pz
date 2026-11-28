@@ -643,6 +643,9 @@ html.v-replica .stats{ display:none }
   .actions .btn-cta{padding:0 13px}
 }
 @media print{
+  :root,html{color-scheme:light!important;background:#fff!important}
+  body.print-resume{background:#fff!important}
+  @page{ margin:14mm }
   body.print-resume > *:not(#resumeModal){display:none!important}
   body.print-resume #resumeModal{position:static;display:block;background:#fff;padding:0;backdrop-filter:none}
   body.print-resume .sheet{border:0;max-height:none;overflow:visible;width:100%;padding:0;background:#fff;animation:none}
@@ -1118,7 +1121,7 @@ const EXP = [
 ];
 
 const SKILLS = [
-  { name:'AI & GenAI', items:['Claude Code','Codex','Cursor','Prompt engineering','Agentic workflows','Agent evaluation','LLM integration','AI-driven SEO','Ollama','MCP'] },
+  { name:'Agent infrastructure & AI', items:['Agent evaluation','Merge gates & review loops','Claude Code','Codex','Cursor','MCP','Agentic workflows','LLM integration','Prompt engineering','Ollama','AI-driven SEO'] },
   { name:'Engineering', items:['C#','.NET 8/9','ASP.NET Core','REST APIs','Microservices','Event-driven architecture','CI/CD'] },
   { name:'Cloud', items:['AWS Lambda','SQS','SNS','S3','DynamoDB','Cognito','Glue','Terraform','CloudFormation'] },
   { name:'Data & Monitoring', items:['SQL Server','T-SQL','Query tuning','CloudWatch','Splunk dashboards'] },
@@ -1252,8 +1255,8 @@ function renderPages(){
     <div class="rh"><h2 id="resumeTitle">Abdul Rahman P Z</h2><span>Coimbatore, India · Remote · Immediate joiner</span></div>
     <div style="color:var(--ink);font-weight:600;margin-top:4px">Agent infrastructure &amp; evaluation — merge gates, review loops and evals for Claude Code and Codex</div>
     <div class="mono" style="font-size:11px;margin-top:6px">linkedin.com/in/itsarm · x.com/abdulrahmanpz · github.com/arm-pz</div>
-    <p style="margin:12px 0 0">Software engineer with 10 years of enterprise delivery in C#/.NET and AWS, now working hands-on building AI coding agent skills, C# MCP servers, and repeatable AI workflows.</p>
-    <h3>Applied AI &amp; open-source work</h3>
+    <p style="margin:12px 0 0">I build merge gates, review loops and evals for agent-written code in Claude Code and Codex, so it only lands when it can prove itself. My merge gate, pr-graph, holds any pull request it can't verify and refuses 34 known-bad PR states in CI. Underneath: 10 years of enterprise delivery in C#/.NET and AWS, including C# MCP servers with explicit read/write contracts.</p>
+    <h3>Agent infrastructure &amp; evaluation (open source)</h3>
     ${AI_WORK.map(a=>`<h4>${esc(a.title)} <span class="mono muted" style="font-size:11px;font-weight:400">${esc(a.org)}</span></h4><ul>${a.pts.map(p=>`<li>${esc(p)}</li>`).join('')}</ul>`).join('')}
     <h3>Experience</h3>
     ${EXP.map(x=>`<div class="rh"><h4>${esc(x.org.split(' · ')[0])} — ${esc(x.title)}</h4><span>${esc(x.when)}</span></div><ul>${x.pts.map(p=>`<li>${esc(p)}</li>`).join('')}</ul>`).join('')}
