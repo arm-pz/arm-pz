@@ -101,7 +101,7 @@ h1.hero em{font-style:italic;color:var(--ink-2)}
 .stage-top{position:absolute;top:22px;left:24px;right:24px;display:flex;justify-content:space-between;align-items:center;gap:10px;z-index:3}
 .chip{font-family:var(--mono);font-size:10.5px;color:var(--ink-3);border:1px solid var(--line);border-radius:999px;padding:5px 10px;background:color-mix(in srgb,var(--surface) 70%,transparent);display:inline-flex;align-items:center;gap:6px}
 .chip:hover{color:var(--ink);border-color:var(--line-2)}
-.room-wrap{position:relative;width:min(660px,100%,calc((100vh - 210px) * 1.07));aspect-ratio:600/560;touch-action:none;cursor:none;user-select:none;-webkit-user-select:none}
+.room-wrap{position:relative;width:min(660px,100%,calc((100vh - 210px) * 1.07));aspect-ratio:600/560;touch-action:pan-y pinch-zoom;cursor:none;user-select:none;-webkit-user-select:none}
 .room-wrap.dragging{cursor:grabbing}
 .room{width:100%;height:100%;transform-style:preserve-3d;will-change:transform;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
 .room.live{transition:transform .12s linear}
@@ -371,6 +371,7 @@ html[data-skin="daylight"] .bubble{ background:#09090b; color:#fafafa }
 .room{ animation:bob 7s ease-in-out infinite }
 .room.live,.room-wrap:hover .room{ animation-play-state:paused }
 @keyframes bob{ 50%{ translate:0 -7px } }
+@media (hover:none){ .room{ animation:none } }   /* keep hotspots still for taps on phones */
 .stage-cta{ position:relative; z-index:3; margin-top:12px }
 .chat-pill{ position:relative; display:inline-flex; align-items:center; gap:9px; height:42px; padding:0 20px; border-radius:999px; background:var(--cta); color:var(--cta-ink); font-family:var(--mono); font-size:12.5px; font-weight:500; box-shadow:0 14px 30px -12px rgba(0,0,0,.7); transition:transform .3s var(--spring) }
 .chat-pill:hover{ transform:translateY(-2px) scale(1.02) }
@@ -590,7 +591,7 @@ html.v-replica .stats{ display:none }
 @media (max-width:1023px){
   #view-home.active,#view-home.rail-off.active{grid-template-columns:1fr}
   #railToggle,.rail-fab{display:none}
-  .bubble{position:relative;top:auto;left:auto;margin:0 auto 4px;align-self:center;max-width:min(320px,92%)}
+  .bubble{position:relative;top:auto;left:auto;margin:0 auto 4px;align-self:center;max-width:min(320px,92%);width:min(320px,92%);height:84px;overflow:hidden}
   .stats{grid-template-columns:1fr 1fr} .stats div:nth-child(2){border-right:0} .stats div:nth-child(-n+2){border-bottom:1px solid var(--line)}
   .rail{border-right:0;border-bottom:1px solid var(--line);padding:32px 20px 28px;order:1}
   .stage{order:0;position:relative;height:auto;min-height:auto;padding:70px 16px 28px}
@@ -604,7 +605,7 @@ html.v-replica .stats{ display:none }
   .s-art{position:absolute;inset:0;opacity:.35}
   .s-in .s-txt{position:relative;z-index:2}
   .car-stage{aspect-ratio:4/3}
-  .audio-btn{bottom:80px;right:12px}
+  .audio-btn{bottom:80px;right:66px;padding:0 12px}
   .audio-btn .txt{display:none}
   h1.hero{font-size:38px}
   .page{padding:56px 16px 150px}
@@ -787,7 +788,7 @@ html.v-replica .stats{ display:none }
           <g id="monitorDetail" style="display:none"></g>
         </svg>
       </div>
-      <button class="loupe-badge" id="loupeBadge" type="button"><i></i><span></span></button>
+      <a class="loupe-badge" id="loupeBadge" href="https://skillsmith.tech" target="_blank" rel="noopener"><i></i><span></span></a>
     </div>
 
     <form class="typebar" id="typeForm" autocomplete="off">
@@ -1485,18 +1486,28 @@ $('#callMic').addEventListener('click', () => {
 });
 
 /* ---------- typed greeting bubble ---------- */
-const GREET = [
-  "Welcome to my studio. Let me show you around the workspace.",
-  "Hover anywhere on the room to use the 2.65× magnifier.",
-  "Sweep over the monitor to peek at skillsmith.tech.",
-  "Find the brass dabara on the desk. The kaapi is fresh.",
-  "Drag the room to move it. Type below to run commands on my screen."
-];
+const TOUCH = matchMedia('(hover: none)').matches;
+// Tips match the device and the room: phones tap, desktops hover; the photo room has no magnifier.
+function greetLines(){
+  const photo = typeof PHOTO !== 'undefined' && PHOTO;
+  if (TOUCH) return [
+    "Welcome to my studio. Let me show you around the workspace.",
+    photo ? "Tap my monitor to see skillsmith.tech. Tap again to open it." : "Tap anywhere on the room to magnify it.",
+    "Tap the brass dabara on the desk, then tap again for the kaapi.",
+    "Want to talk? Tap Chat with ArmBot below."
+  ];
+  return [
+    "Welcome to my studio. Let me show you around the workspace.",
+    photo ? "Hover my monitor to find skillsmith.tech." : "Hover anywhere on the room to use the 2.65× magnifier.",
+    photo ? "The brass dabara on the desk opens Kaapi. The kaapi is fresh." : "Sweep over the monitor to peek at skillsmith.tech.",
+    photo ? "Drag the room to move it, or call ArmBot below." : "Drag the room to move it. Type below to run commands on my screen."
+  ];
+}
 (() => {
   const el = $('#bubbleText'), box = $('#bubble'); let gi = 0;
-  if (reduceMotion){ el.textContent = GREET[0]; return; }
+  if (reduceMotion){ el.textContent = greetLines()[0]; return; }
   const type = () => {
-    const txt = GREET[gi % GREET.length]; let i = 0; el.textContent = '';
+    const G = greetLines(); const txt = G[gi % G.length]; let i = 0; el.textContent = '';
     const step = () => { el.textContent = txt.slice(0, ++i); if (i < txt.length) setTimeout(step, 26 + Math.random()*30); else setTimeout(next, 4200); };
     step();
   };
@@ -1953,7 +1964,7 @@ const HOT = PHOTO ? {
   kaapi: [IMG(418,418), IMG(476,418), IMG(476,496), IMG(418,496)]
 } : {
   monitor: [P(MON.x,MON.y,MON.z), P(MON.x+MON.w,MON.y,MON.z), P(MON.x+MON.w,MON.y,MON.z+MON.h), P(MON.x,MON.y,MON.z+MON.h)],
-  kaapi: (() => { const [X,Y] = P(DABARA.x,DABARA.y,DABARA.z); return [[X-19,Y-46],[X+19,Y-46],[X+19,Y+7],[X-19,Y+7]]; })()
+  kaapi: (() => { const [X,Y] = P(DABARA.x,DABARA.y,DABARA.z); return [[X-24,Y-50],[X+24,Y-50],[X+24,Y+11],[X-24,Y+11]]; })()
 };
 const LINKS = {
   monitor: { url:'https://skillsmith.tech', label:'Click monitor · skillsmith.tech ↗', amber:false },
@@ -2045,7 +2056,7 @@ function placeLoupe(cx, cy){
     loupe.style.left = lx + 'px'; loupe.style.top = ly + 'px';
     md.style.display = hot === 'monitor' ? '' : 'none';
   }
-  if (hot){ const L = LINKS[hot]; badge.querySelector('span').textContent = L.label; badge.classList.toggle('amber', L.amber); badge.classList.add('on');
+  if (hot){ const L = LINKS[hot]; badge.querySelector('span').textContent = tapArmed ? L.label.replace(/^Click (\w+)/, 'Tap again') : L.label; badge.href = L.url; badge.classList.toggle('amber', L.amber); badge.classList.add('on');
     badge.style.left = Math.min(Math.max(lx, 120), wr.width - 120) + 'px'; badge.style.top = Math.min(ly + (PHOTO ? 22 : LOUPE/2 + 10), wr.height - 34) + 'px'; }
   else badge.classList.remove('on');
 }
@@ -2066,29 +2077,42 @@ wrap.addEventListener('pointermove', e => {
     showLoupe(true); placeLoupe(e.clientX, e.clientY);
   }
 });
-wrap.addEventListener('pointerleave', () => { if (drag) return; tilt = { x:0, y:0 }; room.classList.remove('live'); applyRoom(); showLoupe(false); });
+// Mouse/pen: hover = magnifier or highlight, drag = move the room, click = open.
+// Touch: swipes scroll the page; the first tap on a hotspot highlights it, a second tap (or the badge) opens it.
+let tap = null, tapArmed = null;
+function openLink(id){ badge.href = LINKS[id].url; badge.click(); }
+wrap.addEventListener('pointerleave', e => { if (drag || e.pointerType !== 'mouse') return; tilt = { x:0, y:0 }; room.classList.remove('live'); applyRoom(); showLoupe(false); });
 wrap.addEventListener('pointerdown', e => {
   if (e.target.closest('.loupe-badge')) return;
-  drag = { sx:e.clientX, sy:e.clientY, px:pan.x, py:pan.y, moved:false, hotAtDown: hot, type: e.pointerType };
+  if (e.pointerType === 'touch'){ tap = { sx:e.clientX, sy:e.clientY, t:Date.now() }; return; }
+  drag = { sx:e.clientX, sy:e.clientY, px:pan.x, py:pan.y, moved:false };
   wrap.setPointerCapture(e.pointerId);
 });
+wrap.addEventListener('pointermove', e => { if (tap && e.pointerType === 'touch' && Math.hypot(e.clientX - tap.sx, e.clientY - tap.sy) > 12) tap = null; });
+function handleTap(e){
+  const p = toScene(e.clientX, e.clientY); const h = p && hotAt(p);
+  if (h && h === tapArmed){ tapArmed = null; openLink(h); return; }
+  tapArmed = h || null;
+  if (h){ showLoupe(true); placeLoupe(e.clientX, e.clientY); }
+  else showLoupe(false);
+}
 function endDrag(e){
+  if (e.pointerType === 'touch'){
+    const t = tap; tap = null;
+    if (t && Date.now() - t.t < 600 && Math.hypot(e.clientX - t.sx, e.clientY - t.sy) <= 12) handleTap(e);
+    return;
+  }
   if (!drag) return; const d = drag; drag = null; wrap.classList.remove('dragging');
   try { wrap.releasePointerCapture(e.pointerId); } catch(_){}
   if (d.moved){ room.classList.remove('live'); return; }
-  // a click / tap
-  if (d.type === 'touch'){
-    const p = toScene(e.clientX, e.clientY); const h = p && hotAt(p);
-    if (loupeOn && h && h === hot){ window.open(LINKS[h].url, '_blank', 'noopener'); return; }
-    showLoupe(true); placeLoupe(e.clientX, e.clientY); return;
-  }
-  if (hot) window.open(LINKS[hot].url, '_blank', 'noopener');
+  if (hot) openLink(hot);
 }
 wrap.addEventListener('pointerup', endDrag);
-wrap.addEventListener('pointercancel', e => { drag = null; wrap.classList.remove('dragging'); });
+wrap.addEventListener('pointercancel', () => { tap = null; drag = null; wrap.classList.remove('dragging'); });
 wrap.addEventListener('dblclick', () => resetRoom());
-badge.addEventListener('click', e => { e.stopPropagation(); if (hot) window.open(LINKS[hot].url, '_blank', 'noopener'); });
+badge.addEventListener('click', e => { e.stopPropagation(); tapArmed = null; });
 badge.addEventListener('pointerdown', e => e.stopPropagation());
+document.addEventListener('pointerdown', e => { if (tapArmed && !e.target.closest('#roomWrap')){ tapArmed = null; showLoupe(false); } });
 function resetRoom(){ pan = { x:0, y:0 }; tilt = { x:0, y:0 }; room.classList.remove('live'); applyRoom(); }
 $('#resetRoom').addEventListener('click', resetRoom);
 
